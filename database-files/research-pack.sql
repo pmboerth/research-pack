@@ -51,6 +51,7 @@ CREATE TABLE ResearchOpportunities (
     Name VARCHAR(100),
     OwnerId INT NOT NULL,
     ResearchArea VARCHAR(100),
+    Description Text,
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     DepartmentId INT,
@@ -94,3 +95,57 @@ CREATE TABLE Comments (
     FOREIGN KEY (PostId) REFERENCES Posts(PostId),
     FOREIGN KEY (OwnerId) REFERENCES Student(StudentId)
 );
+
+-- Insert Skills
+INSERT INTO Skill (SkillId, Name) VALUES
+(1, 'Python Programming'),
+(2, 'Data Analysis'),
+(3, 'Machine Learning');
+
+-- Insert Departments
+INSERT INTO Departments (DepartmentId, Name) VALUES
+(1, 'Computer Science'),
+(2, 'Electrical Engineering'),
+(3, 'Bioengineering');
+
+-- Insert Students
+INSERT INTO Student (StudentId, FirstName, LastName, Email, SkillId, DepartmentId, ResearchInterest, Year, Major, StudentType) VALUES
+(1, 'Alice', 'Johnson', 'alice.j@university.edu', 1, 1, 'Artificial Intelligence', 3, 'Computer Science', 'undergraduate'),
+(2, 'Bob', 'Smith', 'bob.s@university.edu', 2, 2, 'Signal Processing', 2, 'Electrical Engineering', 'undergraduate'),
+(3, 'Carol', 'Davis', 'carol.d@university.edu', 3, 1, 'Machine Learning', 1, 'Computer Science', 'graduate');
+
+-- Insert Professors
+INSERT INTO Professors (ProfessorId, Email, FirstName, LastName, DepartmentId, ResearchArea) VALUES
+(1, 'john.doe@university.edu', 'John', 'Doe', 1, 'Artificial Intelligence'),
+(2, 'mary.smith@university.edu', 'Mary', 'Smith', 2, 'Signal Processing'),
+(3, 'james.wilson@university.edu', 'James', 'Wilson', 3, 'Biomedical Imaging');
+
+-- Insert Admins
+INSERT INTO Admins (AdminId, FirstName, LastName, DepartmentId) VALUES
+(1, 'Admin', 'Jones', 1),
+(2, 'Admin', 'Brown', 2),
+(3, 'Admin', 'Wilson', 3);
+
+-- Insert Research Opportunities
+INSERT INTO ResearchOpportunities (PositionId, Name, OwnerId, ResearchArea, Description, DepartmentId, SkillId) VALUES
+(1, 'AI Research Assistant', 1, 'Machine Learning', 'DESCRIPTION', 1, 1),
+(2, 'Signal Processing Lab Assistant', 2, 'Digital Signal Processing', 'DESCRIPTION', 2, 2),
+(3, 'Bioinformatics Research', 3, 'Computational Biology', 'DESCRIPTION', 3, 3);
+
+-- Insert Applications
+INSERT INTO Applications (ApplicationId, ApplicantId, ApplicationStatus, PositionId) VALUES
+(1, 1, 'Pending', 1),
+(2, 2, 'Under Review', 2),
+(3, 3, 'Accepted', 3);
+
+-- Insert Posts
+INSERT INTO Posts (PostId, CreatorId, PostTitle, PostContent, PostType, PGroup) VALUES
+(1, 1, 'Looking for AI Study Group', 'Anyone interested in forming an AI study group?', 'Question', 'Computer Science'),
+(2, 2, 'Signal Processing Workshop', 'Workshop next week on DSP fundamentals', 'Collaboration', 'Engineering'),
+(3, 3, 'Research Paper Discussion', 'Lets discuss recent ML papers', 'Collaboration', 'Computer Science');
+
+-- Insert Comments
+INSERT INTO Comments (CommentId, PostId, OwnerId, PostTitle, PostContent) VALUES
+(1, 1, 2, 'RE: AI Study Group', 'Im interested! When are you planning to meet?'),
+(2, 2, 1, 'RE: Workshop', 'Will the workshop be recorded?'),
+(3, 3, 3, 'RE: Paper Discussion', 'Great idea! I suggest starting with the latest transformers paper.');

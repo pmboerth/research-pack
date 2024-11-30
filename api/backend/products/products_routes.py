@@ -133,7 +133,27 @@ def get_10_most_expensive_products():
     response = make_response(jsonify(theData))
     response.status_code = 200
     return response
-    
+
+
+# HW5 ROUTE: NEED TO DELETE
+# -----------------------------------------------------------
+@products.route('/eightMostFrequentlyOrdered', methods=['GET'])
+def get_8_most_frequently_ordered():
+
+    query = '''
+        SELECT product_name,
+                company,
+        FROM products
+        JOIN suppliers
+        JOIN orders
+
+    '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    theData = cursor.fetchall()
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
 
 # ------------------------------------------------------------
 # This is a POST route to add a new product.
