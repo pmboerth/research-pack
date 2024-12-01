@@ -22,11 +22,9 @@ CREATE TABLE Student (
     Year INT,
     Major VARCHAR(50),
     StudentType ENUM('Undergraduate', 'Graduate') NOT NULL,
-    FOREIGN KEY (SkillId) REFERENCES Skill(SkillId),
-    FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId)
+    FOREIGN KEY (SkillId) REFERENCES Skill(SkillId) ON DELETE SET NULL,
+    FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId) ON DELETE SET NULL
 );
-
-
 
 CREATE TABLE Professors (
     ProfessorId INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,7 +33,7 @@ CREATE TABLE Professors (
     LastName VARCHAR(50),
     DepartmentId INT,
     ResearchArea VARCHAR(100),
-    FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId)
+    FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId) ON DELETE SET NULL
 );
 
 CREATE TABLE Admins (
@@ -43,7 +41,7 @@ CREATE TABLE Admins (
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
     DepartmentId INT,
-    FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId)
+    FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId) ON DELETE SET NULL
 );
 
 CREATE TABLE ResearchOpportunities (
@@ -56,9 +54,9 @@ CREATE TABLE ResearchOpportunities (
     UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     DepartmentId INT,
     SkillId INT,
-    FOREIGN KEY (OwnerId) REFERENCES Professors(ProfessorId),
-    FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId),
-    FOREIGN KEY (SkillId) REFERENCES Skill(SkillId)
+    FOREIGN KEY (OwnerId) REFERENCES Professors(ProfessorId) ON DELETE CASCADE,
+    FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId) ON DELETE SET NULL,
+    FOREIGN KEY (SkillId) REFERENCES Skill(SkillId) ON DELETE SET NULL
 );
 
 CREATE TABLE Applications (
@@ -68,8 +66,8 @@ CREATE TABLE Applications (
     PositionId INT NOT NULL,
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (ApplicantId) REFERENCES Student(StudentId),
-    FOREIGN KEY (PositionId) REFERENCES ResearchOpportunities(PositionId)
+    FOREIGN KEY (ApplicantId) REFERENCES Student(StudentId) ON DELETE CASCADE,
+    FOREIGN KEY (PositionId) REFERENCES ResearchOpportunities(PositionId) ON DELETE CASCADE
 );
 
 CREATE TABLE Posts (
@@ -81,7 +79,7 @@ CREATE TABLE Posts (
     UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PostType ENUM('Question', 'Collaboration'),
     PGroup ENUM('Engineering', 'Computer Science', 'Science', 'Health Science', 'Social Science', 'Business'),
-    FOREIGN KEY (CreatorId) REFERENCES Student(StudentId)
+    FOREIGN KEY (CreatorId) REFERENCES Student(StudentId) ON DELETE CASCADE
 );
 
 CREATE TABLE Comments (
@@ -92,6 +90,6 @@ CREATE TABLE Comments (
     PostContent TEXT,
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (PostId) REFERENCES Posts(PostId),
-    FOREIGN KEY (OwnerId) REFERENCES Student(StudentId)
+    FOREIGN KEY (PostId) REFERENCES Posts(PostId) ON DELETE CASCADE,
+    FOREIGN KEY (OwnerId) REFERENCES Student(StudentId) ON DELETE CASCADE
 );
