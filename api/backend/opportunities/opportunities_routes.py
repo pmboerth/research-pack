@@ -95,3 +95,45 @@ def get_opportunities_by_owner(ownerID):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+#------------------------------------------------------------
+# Update a specific opportunity based on the PositionId
+@opportunities.route('/opportunities/p<positionID>', methods=['PUT'])
+def update_opportunity(positionID):
+    
+    the_data = request.get_json()
+    
+    valid_fields = {
+            'name': 'Name',
+            'research_area': 'ResearchArea',
+            'description': 'Description',
+            'department_id': 'DepartmentId',
+            'skill_id': 'SkillId'
+        }
+
+    # build the set dynamically based on which fields were provided
+    update_fields = []
+    params = []
+        
+    for json_key, db_column in valid_fields.items():
+        if json_key in the_data:
+            update_fields.append(f"{db_column} = %s")
+            params.append(the_data[json_key])
+
+    if not update_fields:
+        return make_response({"error": "No valid fields to update"}, 400)
+
+    query = f'''
+        UPDATE ResearchOpportunities 
+        SET {', '.join(update_fields)}
+        WHERE PositionId = %s
+    '''
+        
+    params.append(positionID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, params)            
+    db.get_db().commit()
+    cursor.close()
+
+    return make_response({"message": "Successfully updated opportunity"}, 200)
