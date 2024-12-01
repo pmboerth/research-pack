@@ -11,7 +11,7 @@ opportunities = Blueprint('opportunities', __name__)
 #------------------------------------------------------------
 # Get all opportunities from the system
 @opportunities.route('/opportunities', methods=['GET'])
-def get_opportunities():
+def get_all_opportunities():
     cursor = db.get_db().cursor()
     cursor.execute('''
                    SELECT *
@@ -41,7 +41,7 @@ def get_opportunities(departmentID):
 #------------------------------------------------------------
 # Get all opportunities posted by the particular OwnerID
 @opportunities.route('/opportunities/<ownerID>', methods=['GET'])
-def get_opportunities(ownerID):
+def get_opportunities_by_owner(ownerID):
     current_app.logger.info('GET /opportunities/<ownerID> route')
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM ResearchOpportunities WHERE ownerID = {0}'.format(ownerID))

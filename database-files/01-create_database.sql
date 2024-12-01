@@ -1,4 +1,4 @@
-CREATE DATABASE researchpack;
+CREATE DATABASE IF NOT EXISTS researchpack;
 USE researchpack;
 
 CREATE TABLE Departments (
