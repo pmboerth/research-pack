@@ -19,6 +19,7 @@ def get_all_opportunities():
     ''')
     
     theData = cursor.fetchall()
+    cursor.close()
     
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
@@ -62,10 +63,9 @@ def add_new_opportunities():
     cursor = db.get_db().cursor()
     cursor.execute(query, params)
     db.get_db().commit()
+    cursor.close()
     
-    response = make_response("Successfully added opportunity")
-    response.status_code = 200
-    return response
+    return make_response({"message": "Successfully added opportunity"}, 200)
 
 
 #------------------------------------------------------------
@@ -77,6 +77,7 @@ def get_opportunities(departmentID):
     cursor.execute('SELECT * FROM ResearchOpportunities WHERE DepartmentId = {0}'.format(departmentID))
     
     theData = cursor.fetchall()
+    cursor.close()
     
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
@@ -91,6 +92,7 @@ def get_opportunities_by_owner(ownerID):
     cursor.execute('SELECT * FROM ResearchOpportunities WHERE OwnerId = {0}'.format(ownerID))
     
     theData = cursor.fetchall()
+    cursor.close()
     
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
@@ -136,4 +138,18 @@ def update_opportunity(positionID):
     db.get_db().commit()
     cursor.close()
 
-    return make_response({"message": "Successfully updated opportunity"}, 200)
+    return make_response({"message": f"Successfully updated opportunity {positionID}"}, 200)
+
+#------------------------------------------------------------
+# Delete a specific opportunity based on the PositionId
+@opportunities.route('/opportunities/p<positionID>', methods=['DELETE'])
+def del_opportunity(positionID):
+    cursor = db.get_db().cursor()    
+    query = 'DELETE FROM ResearchOpportunities WHERE PositionId = %s'
+    cursor.execute(query, (positionID))
+        
+    db.get_db().commit()
+    cursor.close()
+        
+    return make_response({"message": f"Successfully deleted opportunity {positionID}"}, 200)
+    
