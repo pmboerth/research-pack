@@ -31,14 +31,6 @@ def get_all_opportunities():
 def add_new_opportunities():
     the_data = request.json
     current_app.logger.info(the_data)
-
-    #extracting the variable
-    name = the_data['name']
-    owner_id = the_data['owner_id']
-    reserach_area = the_data['research_area']
-    description = the_data['description']
-    department_id = the_data['department_id']
-    skill_id = the_data['skill_id']
     
     query = '''
             INSERT INTO ResearchOpportunities (
