@@ -44,7 +44,7 @@ def get_students_by_department(departmentID):
 # Add a new student to the system
 @students.route('/students', methods=['POST'])
 def add_new_student():
-    the_data = request.json()
+    the_data = request.json
     current_app.logger.info(the_data)
     
     query = '''
@@ -85,7 +85,7 @@ def add_new_student():
 @students.route('/students/s<studentID>', methods=['PUT'])
 def update_student(studentID):
     
-    the_data = request.get_json
+    the_data = request.get_json()
     
     valid_fields = {
             'first_name': 'FirstName',
