@@ -81,3 +81,15 @@ def add_new_application(opportunityID):
     
     return make_response({"message": "Successfully added application"}, 200)
 
+#------------------------------------------------------------
+# Delete a specific application based on the ApplicationId
+@applications.route('/applications/a<applicationID>', methods=['DELETE'])
+def del_opportunity(applicationID):
+    cursor = db.get_db().cursor()    
+    query = 'DELETE FROM Applications WHERE ApplicationId = %s'
+    cursor.execute(query, (applicationID))
+        
+    db.get_db().commit()
+    cursor.close()
+        
+    return make_response({"message": f"Successfully deleted application {applicationID}"}, 200)
