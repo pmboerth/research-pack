@@ -6,12 +6,12 @@ CREATE TABLE Departments (
     Name VARCHAR(100)
 );
 
-CREATE TABLE Skill (
+CREATE TABLE Skills (
     SkillId INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(50)
 );
 
-CREATE TABLE Student (
+CREATE TABLE Students (
     StudentId INT AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
@@ -22,7 +22,7 @@ CREATE TABLE Student (
     Year INT,
     Major VARCHAR(50),
     StudentType ENUM('Undergraduate', 'Graduate') NOT NULL,
-    FOREIGN KEY (SkillId) REFERENCES Skill(SkillId) ON DELETE SET NULL,
+    FOREIGN KEY (SkillId) REFERENCES Skills(SkillId) ON DELETE SET NULL,
     FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId) ON DELETE SET NULL
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE ResearchOpportunities (
     SkillId INT,
     FOREIGN KEY (OwnerId) REFERENCES Professors(ProfessorId) ON DELETE CASCADE,
     FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId) ON DELETE SET NULL,
-    FOREIGN KEY (SkillId) REFERENCES Skill(SkillId) ON DELETE SET NULL
+    FOREIGN KEY (SkillId) REFERENCES Skills(SkillId) ON DELETE SET NULL
 );
 
 CREATE TABLE Applications (
@@ -66,7 +66,7 @@ CREATE TABLE Applications (
     PositionId INT NOT NULL,
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (ApplicantId) REFERENCES Student(StudentId) ON DELETE CASCADE,
+    FOREIGN KEY (ApplicantId) REFERENCES Students(StudentId) ON DELETE CASCADE,
     FOREIGN KEY (PositionId) REFERENCES ResearchOpportunities(PositionId) ON DELETE CASCADE
 );
 
@@ -79,7 +79,7 @@ CREATE TABLE Posts (
     UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PostType ENUM('Question', 'Collaboration'),
     PGroup ENUM('Engineering', 'Computer Science', 'Science', 'Health Science', 'Social Science', 'Business'),
-    FOREIGN KEY (CreatorId) REFERENCES Student(StudentId) ON DELETE CASCADE
+    FOREIGN KEY (CreatorId) REFERENCES Students(StudentId) ON DELETE CASCADE
 );
 
 CREATE TABLE Comments (
@@ -91,5 +91,5 @@ CREATE TABLE Comments (
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (PostId) REFERENCES Posts(PostId) ON DELETE CASCADE,
-    FOREIGN KEY (OwnerId) REFERENCES Student(StudentId) ON DELETE CASCADE
+    FOREIGN KEY (OwnerId) REFERENCES Students(StudentId) ON DELETE CASCADE
 );

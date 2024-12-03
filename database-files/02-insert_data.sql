@@ -8,11 +8,11 @@ TRUNCATE TABLE Applications;
 TRUNCATE TABLE Comments;
 TRUNCATE TABLE ResearchOpportunities;
 TRUNCATE TABLE Posts;
-TRUNCATE TABLE Student;
+TRUNCATE TABLE Students;
 TRUNCATE TABLE Professors;
 TRUNCATE TABLE Admins;
 TRUNCATE TABLE Departments;
-TRUNCATE TABLE Skill;
+TRUNCATE TABLE Skills;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- Insert Departments (30 rows)
@@ -49,7 +49,7 @@ INSERT INTO Departments (Name) VALUES
 ('Bioinformatics');
 
 -- Insert Skills (30 rows)
-INSERT INTO Skill (Name) VALUES
+INSERT INTO Skills (Name) VALUES
 ('Python Programming'),
 ('Data Analysis'),
 ('Machine Learning'),
@@ -82,7 +82,7 @@ INSERT INTO Skill (Name) VALUES
 ('Requirements Analysis');
 
 -- Insert Students (35 rows)
-INSERT INTO Student (FirstName, LastName, Email, SkillId, DepartmentId, ResearchInterest, Year, Major, StudentType) VALUES
+INSERT INTO Students (FirstName, LastName, Email, SkillId, DepartmentId, ResearchInterest, Year, Major, StudentType) VALUES
 ('John', 'Doe', 'john.doe@university.edu', 1, 1, 'Artificial Intelligence', 3, 'Computer Science', 'Undergraduate'),
 ('Jane', 'Smith', 'jane.smith@university.edu', 2, 2, 'Signal Processing', 2, 'Electrical Engineering', 'Graduate'),
 ('Bob', 'Johnson', 'bob.johnson@university.edu', 3, 3, 'Robotics', 4, 'Mechanical Engineering', 'Undergraduate'),
