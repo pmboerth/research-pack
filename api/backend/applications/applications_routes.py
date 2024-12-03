@@ -42,7 +42,7 @@ def get_applications_for_opportunity(opportunityID):
 #------------------------------------------------------------
 # Get all applications from a specific student
 @applications.route('/applications/s<studentID>', methods=['GET'])
-def get_applications_from_student(studentID):
+def get_applications_by_student(studentID):
     current_app.logger.info('GET /applications/o<opportuntiyID> route')
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM Applications WHERE ApplicantId = {0}'.format(studentID))
@@ -82,9 +82,50 @@ def add_new_application(opportunityID):
     return make_response({"message": "Successfully added application"}, 200)
 
 #------------------------------------------------------------
+# Update a specific application based on its ApplicationId
+@applications.route('/applications/a<applicationID>', methods=['PUT'])
+def update_application(applicationID):
+    
+    the_data = request.get_json()
+    
+    valid_fields = {
+            'applicant_id': 'ApplicantId',
+            'app_status': 'ApplicationStatus',
+            'position_id': 'PositionId',
+        }
+
+    # build the set dynamically based on which fields were provided
+    update_fields = []
+    params = []
+        
+    for json_key, db_column in valid_fields.items():
+        if json_key in the_data:
+            update_fields.append(f"{db_column} = %s")
+            params.append(the_data[json_key])
+
+    if not update_fields:
+        return make_response({"error": "No valid fields to update"}, 400)
+
+    query = f'''
+        UPDATE Applications 
+        SET {', '.join(update_fields)}
+        WHERE ApplicationId = %s
+    '''
+        
+    params.append(applicationID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, params)            
+    db.get_db().commit()
+    cursor.close()
+
+    return make_response({"message": f"Successfully updated application {applicationID}"}, 200)
+
+
+#------------------------------------------------------------
 # Delete a specific application based on the ApplicationId
 @applications.route('/applications/a<applicationID>', methods=['DELETE'])
-def del_opportunity(applicationID):
+def del_application(applicationID):
     cursor = db.get_db().cursor()    
     query = 'DELETE FROM Applications WHERE ApplicationId = %s'
     cursor.execute(query, (applicationID))
