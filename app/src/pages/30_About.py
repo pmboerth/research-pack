@@ -8,10 +8,10 @@ st.write("# About this App")
 
 st.markdown (
     """
-    This is a demo app for CS 3200 Course Project.  
+    This is a demo for our CS 3200 Course Project app called Research Pack.  
 
-    The goal of this demo is to provide information on the tech stack 
-    being used as well as demo some of the features of the various platforms. 
+    The goal of this app to allow for students and professors alike to find opportunities or people with interests in opportunities at Northeastern. 
+    This app will simplify the talent search process within research projects and promote greater collaboration! 
 
     Stay tuned for more information and features to come!
     """
