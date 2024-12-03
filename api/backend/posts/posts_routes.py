@@ -52,3 +52,16 @@ def add_new_post():
     cursor.close()
     
     return make_response({"message": "Successfully added post"}, 200)
+
+#------------------------------------------------------------
+# Delete a specific post from the system
+@posts.route('/posts/p<postID>', methods=['DELETE'])
+def del_post(postID):
+    cursor = db.get_db().cursor()    
+    query = 'DELETE FROM Posts WHERE PostId = %s'
+    cursor.execute(query, (postID))
+        
+    db.get_db().commit()
+    cursor.close()
+        
+    return make_response({"message": f"Successfully deleted post {postID}"}, 200)
