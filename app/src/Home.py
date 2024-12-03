@@ -55,7 +55,7 @@ if st.button("Act as Alex Bellingham, an Undergraduate Student",
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
     logger.info("Logging in as Undergraduate Student Persona")
-    st.switch_page('pages/00_Und_Stu_Home.py')
+    st.switch_page('pages/00_Pol_Strat_Home.py')
 
 if st.button('Act as Jeff Sturrow, a PHD Student', 
             type = 'primary', 
@@ -63,7 +63,7 @@ if st.button('Act as Jeff Sturrow, a PHD Student',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'phd_student'
     st.session_state['first_name'] = 'Jeff'
-    st.switch_page('pages/10_PHD_Stu_Home.py')
+    st.switch_page('pages/10_USAID_Worker_Home.py')
 
 if st.button('Act as Emily Chen, an Associate Professor', 
             type = 'primary', 
@@ -71,7 +71,7 @@ if st.button('Act as Emily Chen, an Associate Professor',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'professor'
     st.session_state['first_name'] = 'Emily'
-    st.switch_page('pages/20_Professor_Home.py')
+    st.switch_page('pages/20_Admin_Home.py')
 
 if st.button('Act as Carl Jackson, a Department Administrator',
              type = 'primary',
@@ -79,7 +79,7 @@ if st.button('Act as Carl Jackson, a Department Administrator',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'Carl'
-    st.switch_page('pages/30_Admin_Home.py')
+    st.switch_page('pages/20_Admin_Home.py')
 
 
 
