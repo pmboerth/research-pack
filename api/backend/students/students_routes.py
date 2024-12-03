@@ -85,7 +85,7 @@ def add_new_student():
 @students.route('/students/s<studentID>', methods=['PUT'])
 def update_student(studentID):
     
-    the_data = request.get_json()
+    the_data = request.get_json
     
     valid_fields = {
             'first_name': 'FirstName',
