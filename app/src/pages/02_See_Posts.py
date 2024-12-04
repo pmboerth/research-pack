@@ -30,16 +30,16 @@ if st.button("Submit",
                 post_group = post.get('PGroup', 'Unknown')
                 
                 result1 = requests.get(f'http://api:4000/s/students/s{creator_id}').json()
-                student_name = result1[0].get('FirstName') + " " + result1[0].get('LastName')
+                student_name = result1[0].get('FirstName', 'Unknown') + " " + result1[0].get('LastName', '')
 
                 # Display each post using styled HTML
                 st.markdown(f"""
-                    <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
-                        <h3 style="margin-bottom: 5px; color: #4CAF50;">{post_title}</h3>
-                        <p style="margin-bottom: 5px; color: #555;"><strong>Group:</strong> {post_group}</p>
-                        <p style="margin-bottom: 5px; color: #555;"><strong>Student:</strong> {student_name}</p>
-                        <p style="margin-bottom: 5px; color: #555;"><strong>Created At:</strong> {created_at}</p>
-                        <p style="margin-bottom: 10px; color: #777;">{post_content}</p>
+                    <div style="border: 1px solid #3D4A59; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); background-color: #2E3A47;">
+                        <h3 style="margin-bottom: 5px; color: #90AEAD;">{post_title}</h3>
+                        <p style="margin-bottom: 5px; color: #B5C6C3;"><strong>Group:</strong> {post_group}</p>
+                        <p style="margin-bottom: 5px; color: #B5C6C3;"><strong>Student:</strong> {student_name}</p>
+                        <p style="margin-bottom: 5px; color: #B5C6C3;"><strong>Created At:</strong> {created_at}</p>
+                        <p style="margin-bottom: 10px; color: #D1D7DC;">{post_content}</p>
                     </div>
                 """, unsafe_allow_html=True)
         else:

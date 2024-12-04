@@ -29,4 +29,11 @@ if st.button('Make a Post',
              use_container_width=True):
   st.switch_page('pages/03_Make_Post.py')
   
+if st.button('Update Profile', 
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/04_Update_Student_Information.py')
+  
+
+  
   

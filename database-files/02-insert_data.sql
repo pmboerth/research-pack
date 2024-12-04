@@ -83,8 +83,8 @@ INSERT INTO Skills (Name) VALUES
 
 -- Insert Students (35 rows)
 INSERT INTO Students (FirstName, LastName, Email, SkillId, DepartmentId, ResearchInterest, Year, Major, StudentType) VALUES
-('John', 'Doe', 'john.doe@university.edu', 1, 1, 'Artificial Intelligence', 3, 'Computer Science', 'Undergraduate'),
-('Jane', 'Smith', 'jane.smith@university.edu', 2, 2, 'Signal Processing', 2, 'Electrical Engineering', 'Graduate'),
+('Alex', 'Bellingham', 'alex.bellingham@university.edu', 1, 1, 'Artificial Intelligence', 3, 'Computer Science', 'Undergraduate'),
+('Jeff', 'Sturrow', 'jeff.sturrow@university.edu', 2, 2, 'Signal Processing', 2, 'Electrical Engineering', 'Graduate'),
 ('Bob', 'Johnson', 'bob.johnson@university.edu', 3, 3, 'Robotics', 4, 'Mechanical Engineering', 'Undergraduate'),
 ('Sarah', 'Williams', 'sarah.w@university.edu', 4, 4, 'Process Optimization', 3, 'Chemical Engineering', 'Graduate'),
 ('Michael', 'Brown', 'michael.b@university.edu', 5, 5, 'Structural Analysis', 2, 'Civil Engineering', 'Undergraduate'),

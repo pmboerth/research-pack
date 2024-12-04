@@ -19,7 +19,8 @@ post_group = st.selectbox("Choose a Post Group:", ["Engineering", "Computer Scie
                                                    "Science", "Health Science", "Social Science", "Business"])
 
 
-if st.button("Submit Post"):
+if st.button("Submit Post",
+             type="primary"):
     if post_title and post_content:
         
         post = {
@@ -37,4 +38,7 @@ if st.button("Submit Post"):
             st.error(f"Failed to add post: {response.status_code} - {response.text}")
     else:
         st.warning("Please fill out all required fields.")
+        
+if st.button("Back"):
+    st.switch_page('pages/00_Undergraduate_Home.py')
 
