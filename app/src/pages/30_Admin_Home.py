@@ -27,7 +27,7 @@ if st.button('Delete uncompliant Research Opportunities',
 if st.button('See all Students', 
              type='primary',
              use_container_width=True):
-  st.switch_page('33_All_Students.py')
+  st.switch_page('33_All_Students')
 
 if st.button('Remove ineligible Students', 
              type='primary',
