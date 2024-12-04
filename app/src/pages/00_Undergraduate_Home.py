@@ -23,3 +23,10 @@ if st.button('See Posts',
              type='primary',
              use_container_width=True):
   st.switch_page('pages/02_See_Posts.py')
+  
+if st.button('Make a Post', 
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/03_Make_Post.py')
+  
+  

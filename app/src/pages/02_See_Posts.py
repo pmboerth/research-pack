@@ -37,7 +37,7 @@ if st.button("Submit",
                     <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
                         <h3 style="margin-bottom: 5px; color: #4CAF50;">{post_title}</h3>
                         <p style="margin-bottom: 5px; color: #555;"><strong>Group:</strong> {post_group}</p>
-                        <p style="margin-bottom: 5px; color: #555;"><strong>Creator Name:</strong> {student_name}</p>
+                        <p style="margin-bottom: 5px; color: #555;"><strong>Student:</strong> {student_name}</p>
                         <p style="margin-bottom: 5px; color: #555;"><strong>Created At:</strong> {created_at}</p>
                         <p style="margin-bottom: 10px; color: #777;">{post_content}</p>
                     </div>
