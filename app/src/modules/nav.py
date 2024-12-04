@@ -14,10 +14,10 @@ def AboutPageNav():
     st.sidebar.page_link("pages/40_About.py", label="About", icon="🧠")
 
 
-#### ------------------------ Examples for Role of pol_strat_advisor ------------------------
-def PolStratAdvHomeNav():
+#### ------------------------ Examples for Role of undergraduate_student ------------------------
+def UndergraduateStudentHomeNav():
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/00_Undergraduate_Home.py", label="Undergraduate Home", icon="👤"
     )
 
 
@@ -60,7 +60,7 @@ def SideBarLinks(show_home=False):
     """
 
     # add a logo to the sidebar always
-    st.sidebar.image("assets/logo.png", width=150)
+    st.sidebar.image("assets/northeastern.png", use_container_width=True)
 
     # If there is no logged in user, redirect to the Home (Landing) page
     if "authenticated" not in st.session_state:
@@ -75,10 +75,8 @@ def SideBarLinks(show_home=False):
     if st.session_state["authenticated"]:
 
         # Show World Bank Link and Map Demo Link if the user is a political strategy advisor role.
-        if st.session_state["role"] == "pol_strat_advisor":
-            PolStratAdvHomeNav()
-            WorldBankVizNav()
-            MapDemoNav()
+        if st.session_state["role"] == "undergraduate_student":
+            UndergraduateStudentHomeNav()
 
         # If the user role is usaid worker, show the Api Testing page
         if st.session_state["role"] == "usaid_worker":
