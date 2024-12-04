@@ -16,7 +16,7 @@ st.write(f"### Hi, {st.session_state['first_name']}.")
 
 # Fetch and display all research opportunities
 if st.button('See All Research Opportunities', type='primary'):
-    response = requests.get('http://api:4000/research_opportunities')
+    response = requests.get('http://api:4000/opportunities')
     
     if response.status_code == 200:
         opportunities = response.json()
