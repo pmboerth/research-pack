@@ -5,6 +5,8 @@ from backend.opportunities.opportunities_routes import opportunities
 from backend.posts.posts_routes import posts
 from backend.students.students_routes import students
 from backend.applications.applications_routes import applications
+from backend.departments.departments_routes import departments
+from backend.professors.professors_routes import professors
 import os
 from dotenv import load_dotenv
 
@@ -44,6 +46,9 @@ def create_app():
     app.register_blueprint(posts,   url_prefix='/p')
     app.register_blueprint(students, url_prefix='/s')
     app.register_blueprint(applications, url_prefix='/a')
+    app.register_blueprint(departments, url_prefix='/d')
+    app.register_blueprint(professors, url_prefix='/pr')
+
 
 
     # Don't forget to return the app object
