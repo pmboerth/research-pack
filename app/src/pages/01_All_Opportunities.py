@@ -19,7 +19,7 @@ if st.button('See All Opportunities',
              type='primary'):
   results = requests.get('http://api:4000/o/opportunities').json()
   
-  if results:
+  if results.response_code == 200:
        for opportunity in results:
             position_name = opportunity.get('Name', 'No Title')
             research_area = opportunity.get('ResearchArea', 'No Research Area')
