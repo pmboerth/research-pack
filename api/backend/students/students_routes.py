@@ -26,6 +26,21 @@ def get_all_students():
     return the_response
 
 #------------------------------------------------------------
+# Get a student name from a specific ID
+@students.route('/students/s<studentID>', methods=['GET'])
+def get_student_name_from_id(studentID):
+    current_app.logger.info('GET /students/s<studentID> route')
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT FirstName, LastName FROM Students WHERE StudentId = %s', (studentID,))
+    
+    theData = cursor.fetchall()
+    cursor.close()
+    
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
+#------------------------------------------------------------
 # Get all students with the particular DepartmentID
 @students.route('/students/d<departmentID>', methods=['GET'])
 def get_students_by_department(departmentID):
