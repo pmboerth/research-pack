@@ -34,12 +34,12 @@ if st.button("Submit",
 
                 # Display each post using styled HTML
                 st.markdown(f"""
-                    <div style="border: 1px solid #3D4A59; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); background-color: #2E3A47;">
-                        <h3 style="margin-bottom: 5px; color: #90AEAD;">{post_title}</h3>
-                        <p style="margin-bottom: 5px; color: #B5C6C3;"><strong>Group:</strong> {post_group}</p>
-                        <p style="margin-bottom: 5px; color: #B5C6C3;"><strong>Student:</strong> {student_name}</p>
-                        <p style="margin-bottom: 5px; color: #B5C6C3;"><strong>Created At:</strong> {created_at}</p>
-                        <p style="margin-bottom: 10px; color: #D1D7DC;">{post_content}</p>
+                    <div style="border: 1px solid #3D4A59; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); background-color: #3D4A59;">
+                        <h3 style="margin-bottom: 10px; color: #90AEAD;">{post_title}</h3>
+                        <p style="margin-bottom: 8px; color: #D1D7DC;"><strong>Group:</strong> {post_group}</p>
+                        <p style="margin-bottom: 8px; color: #D1D7DC;"><strong>Student:</strong> {student_name}</p>
+                        <p style="margin-bottom: 8px; color: #D1D7DC;"><strong>Created At:</strong> {created_at}</p>
+                        <p style="margin-bottom: 12px; color: #D1D7DC;">{post_content}</p>
                     </div>
                 """, unsafe_allow_html=True)
         else:
