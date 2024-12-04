@@ -70,6 +70,7 @@ def SideBarLinks(show_home=False):
     if show_home:
         # Show the Home page link (the landing page)
         HomeNav()
+        AboutPageNav()
 
     # Show the other page navigators depending on the users' role.
     if st.session_state["authenticated"]:
@@ -85,15 +86,16 @@ def SideBarLinks(show_home=False):
             ClassificationNav()
 
         # If the user is an administrator, give them access to the administrator pages
-        if st.session_state["role"] == "administrator":
-            AdminPageNav()
+        if st.session_state["role"] == "graduate_student":
+            GraduateStudentHomeNav()
 
-    # Always show the About page at the bottom of the list of links
-    AboutPageNav()
 
     if st.session_state["authenticated"]:
         # Always show a logout button if there is a logged in user
         if st.sidebar.button("Logout"):
             del st.session_state["role"]
             del st.session_state["authenticated"]
+            del st.session_state["student_id"]
+            del st.session_state["professor_id"]
+            del st.session_sate["admin_id"]
             st.switch_page("Home.py")
