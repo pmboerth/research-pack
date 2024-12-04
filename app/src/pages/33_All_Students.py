@@ -14,10 +14,10 @@ st.header('Students')
 # You can access the session state to make a more customized/personalized app experience
 st.write(f"### Hi, {st.session_state['first_name']}.")
 
-# add a button to use get all the research opportunities
+# add a button to use get all students
 if st.button('See All Students',
              type='primary'):
-  results = requests.get('http://api:4000/o/opportunities').json()
+  results = requests.get('http://api:4000/students')
   
   if results:
        for student in results:
