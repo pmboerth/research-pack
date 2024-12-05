@@ -46,7 +46,7 @@ else:
     st.error("No position data found. Please go back and select a position to update.")
 
 if st.button("Back"):
-    st.switch_page('pages/20_Professor_Home.py')
+    st.switch_page('pages/22_Posted_Positions.py')
 
         
 

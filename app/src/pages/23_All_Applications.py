@@ -51,3 +51,5 @@ if st.button("View Applications",type="primary"):
     else:
         st.warning("Please enter a valid student ID to view their applications.")
 
+if st.button("Back"):
+    st.switch_page('pages/20_Professor_Home.py')

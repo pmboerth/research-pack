@@ -54,7 +54,8 @@ if application_data:
                     </div>
                 """, unsafe_allow_html=True)
     
-    
+if st.button("Back"):
+    st.switch_page('pages/22_Posted_Positions.py')   
         
 
 
