@@ -19,7 +19,7 @@ professorid = st.session_state['professor_id']
 research_area = st.text_input("Enter a Research Area:")
 research_description = st.text_area("Enter a Description of the Postion:")
 department_id = st.session_state['department_id']
-skill_id = st.text_input("Enter a Skill ID:")
+skill_id = st.number_input("Enter a Skill ID:", min_value=1, step=1)
 
 # Post opportunity if fields are filled and call the API
 if st.button("Post Opportunity",
