@@ -121,7 +121,7 @@ INSERT INTO Students (FirstName, LastName, Email, SkillId, DepartmentId, Researc
 
 -- Insert Professors (30 rows)
 INSERT INTO Professors (Email, FirstName, LastName, DepartmentId, ResearchArea) VALUES
-('prof.smith@university.edu', 'Robert', 'Smith', 1, 'Machine Learning'),
+('prof.chen@university.edu', 'Emily', 'Chen', 1, 'Machine Learning'),
 ('prof.johnson@university.edu', 'Mary', 'Johnson', 2, 'Digital Signal Processing'),
 ('prof.williams@university.edu', 'James', 'Williams', 3, 'Robotics Control'),
 ('prof.brown@university.edu', 'David', 'Brown', 4, 'Chemical Process Optimization'),
