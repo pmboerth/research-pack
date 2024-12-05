@@ -11,9 +11,6 @@ SideBarLinks()
 # set the header of the page
 st.header('Students')
 
-# You can access the session state to make a more customized/personalized app experience
-st.write(f"### Hi, {st.session_state['first_name']}.")
-
 # Initialize state to track whether the button was pressed
 if 'show_students' not in st.session_state:
     st.session_state['show_students'] = False

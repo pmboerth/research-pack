@@ -47,7 +47,7 @@ if response.status_code == 200:
                 </div>
             """, unsafe_allow_html=True)
 
-            col1, col2, col3 = st.columns([1, 15,15])
+            col1, col2, col3 = st.columns([1, 15, 15])
 
             with col1:
 

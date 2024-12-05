@@ -9,12 +9,12 @@ from backend.db_connection import db
 skills = Blueprint('skills', __name__)
 
 #------------------------------------------------------------
-# Get a department name from a specific ID
+# Get a skill name from a specific ID
 @skills.route('/skills/s<skillID>', methods=['GET'])
 def get_skill_name_from_id(skillID):
     current_app.logger.info('GET /skills/s<skillID> route')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT Name FROM Skills WHERE skillID = %s', (skillID,))
+    cursor.execute('SELECT Name FROM Skills WHERE SkillId = %s', (skillID,))
     
     theData = cursor.fetchall()
     cursor.close()

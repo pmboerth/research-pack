@@ -14,7 +14,7 @@ departments = Blueprint('departments', __name__)
 def get_department_name_from_id(departmentID):
     current_app.logger.info('GET /departments/d<departmentID> route')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT Name FROM Departments WHERE DepartmentID = %s', (departmentID,))
+    cursor.execute('SELECT Name FROM Departments WHERE DepartmentId = %s', (departmentID,))
     
     theData = cursor.fetchall()
     cursor.close()
@@ -23,6 +23,7 @@ def get_department_name_from_id(departmentID):
     the_response.status_code = 200
     return the_response
 
+#------------------------------------------------------------
 # Get all departments from the system
 @departments.route('/departments', methods=['GET'])
 def get_all_departments():
