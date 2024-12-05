@@ -26,6 +26,21 @@ def get_all_opportunities():
     return the_response
 
 #------------------------------------------------------------
+# Get all name of opportunity from position id
+@opportunities.route('/opportunities/p<positionid>', methods=['GET'])
+def get_opportunity_name(positionid):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT Name FROM ResearchOpportunities WHERE PositionId = {0}'.format(positionid))
+    
+    theData = cursor.fetchall()
+    cursor.close()
+    
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
+
+#------------------------------------------------------------
 # Enter a new opportunity into the system
 @opportunities.route('/opportunities', methods=['POST'])
 def add_new_opportunities():
