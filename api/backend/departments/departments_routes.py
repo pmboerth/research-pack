@@ -5,11 +5,12 @@ from flask import make_response
 from flask import current_app
 from backend.db_connection import db
 
-# create the departments blueprint object
+# Blueprint object for all departments routes
 departments = Blueprint('departments', __name__)
 
+
 #------------------------------------------------------------
-# Get a department name from a specific ID
+# Get a department name based on the DepartmentId
 @departments.route('/departments/d<departmentID>', methods=['GET'])
 def get_department_name_from_id(departmentID):
     current_app.logger.info('GET /departments/d<departmentID> route')
@@ -23,15 +24,13 @@ def get_department_name_from_id(departmentID):
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
 # Get all departments from the system
 @departments.route('/departments', methods=['GET'])
 def get_all_departments():
     cursor = db.get_db().cursor()
-    cursor.execute('''
-                   SELECT *
-                   FROM Departments
-    ''')
+    cursor.execute('SELECT * FROM Departments')
     
     theData = cursor.fetchall()
     cursor.close()

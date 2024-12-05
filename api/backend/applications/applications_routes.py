@@ -5,17 +5,17 @@ from flask import make_response
 from flask import current_app
 from backend.db_connection import db
 
+
+# Blueprint object for all applications routes
 applications = Blueprint('applications', __name__)
+
 
 #------------------------------------------------------------
 # Get all applications from the system
 @applications.route('/applications', methods=['GET'])
 def get_all_applications():
     cursor = db.get_db().cursor()
-    cursor.execute('''
-                   SELECT *
-                   FROM Applications
-    ''')
+    cursor.execute('SELECT * FROM Applications')
     
     theData = cursor.fetchall()
     cursor.close()
@@ -24,8 +24,9 @@ def get_all_applications():
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
-# Get all applications for a specific opportunity
+# Get all applications for a specific opportunity based on the OpportunityId
 @applications.route('/applications/o<opportunityID>', methods=['GET'])
 def get_applications_for_opportunity(opportunityID):
     current_app.logger.info('GET /applications/o<opportuntiyID> route')
@@ -39,8 +40,9 @@ def get_applications_for_opportunity(opportunityID):
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
-# Get all applications from a specific student
+# Get all applications from a specific student based on the StudentId
 @applications.route('/applications/s<studentID>', methods=['GET'])
 def get_applications_by_student(studentID):
     current_app.logger.info('GET /applications/o<opportuntiyID> route')
@@ -54,8 +56,9 @@ def get_applications_by_student(studentID):
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
-# Add a new application to the system
+# Add a new application to the system for a specific opportunity given the OpportunityId
 @applications.route('/applications/o<opportunityID>', methods=['POST'])
 def add_new_application(opportunityID):
     the_data = request.json
@@ -81,11 +84,11 @@ def add_new_application(opportunityID):
     
     return make_response({"message": "Successfully added application"}, 200)
 
+
 #------------------------------------------------------------
 # Update a specific application based on its ApplicationId
 @applications.route('/applications/a<applicationID>', methods=['PUT'])
 def update_application(applicationID):
-    
     the_data = request.get_json()
     
     valid_fields = {

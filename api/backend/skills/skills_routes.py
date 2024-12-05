@@ -5,11 +5,12 @@ from flask import make_response
 from flask import current_app
 from backend.db_connection import db
 
-# create the skills blueprint object
+# Blueprint object for all skills routes
 skills = Blueprint('skills', __name__)
 
+
 #------------------------------------------------------------
-# Get a skill name from a specific ID
+# Get a skill name based on the given SkillId
 @skills.route('/skills/s<skillID>', methods=['GET'])
 def get_skill_name_from_id(skillID):
     current_app.logger.info('GET /skills/s<skillID> route')
@@ -23,19 +24,20 @@ def get_skill_name_from_id(skillID):
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
-# Check if a skill name exists in the database. If not, add it.
+# Add a skill to the database if it does not exist already
 @skills.route('skills/s<skill_name>', methods=['POST'])
 def check_or_add_skill(skill_name):
     current_app.logger.info('POST /skills/s<skill_name> route')
     cursor = db.get_db().cursor()
     
-    #check if skill name exists
+    # check if skill name exists
     cursor.execute('SELECT SkillId FROM Skills WHERE Name = %s', (skill_name,))
 
     theData = cursor.fetchone()
 
-    #if the skill name exists
+    # if the skill name exists
     if theData:
         skill_id = theData[0]
         cursor.close()

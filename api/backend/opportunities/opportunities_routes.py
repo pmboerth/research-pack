@@ -5,18 +5,16 @@ from flask import make_response
 from flask import current_app
 from backend.db_connection import db
 
-# create the opportunities blueprint object
+# Blueprint object for all opportunities routes
 opportunities = Blueprint('opportunities', __name__)
+
 
 #------------------------------------------------------------
 # Get all opportunities from the system
 @opportunities.route('/opportunities', methods=['GET'])
 def get_all_opportunities():
     cursor = db.get_db().cursor()
-    cursor.execute('''
-                   SELECT *
-                   FROM ResearchOpportunities
-    ''')
+    cursor.execute('SELECT * FROM ResearchOpportunities')
     
     theData = cursor.fetchall()
     cursor.close()
@@ -25,8 +23,9 @@ def get_all_opportunities():
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
-# Get all name of opportunity from position id
+# Get all name of opportunity based on the PositionId
 @opportunities.route('/opportunities/p<positionid>', methods=['GET'])
 def get_opportunity_name(positionid):
     cursor = db.get_db().cursor()
@@ -76,7 +75,7 @@ def add_new_opportunities():
 
 
 #------------------------------------------------------------
-# Get all opportunities with the particular DepartmentID
+# Get all opportunities in a specific department based on the given DepartmentId
 @opportunities.route('/opportunities/d<departmentID>', methods=['GET'])
 def get_opportunities(departmentID):
     current_app.logger.info('GET /opportunities/d<departmentID> route')
@@ -90,8 +89,9 @@ def get_opportunities(departmentID):
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
-# Get all opportunities posted by the particular OwnerID
+# Get all opportunities posted by a particular owner based on the given OwnerId
 @opportunities.route('/opportunities/o<ownerID>', methods=['GET'])
 def get_opportunities_by_owner(ownerID):
     current_app.logger.info('GET /opportunities/o<ownerID> route')
@@ -104,6 +104,7 @@ def get_opportunities_by_owner(ownerID):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
 
 #------------------------------------------------------------
 # Update a specific opportunity based on the PositionId
@@ -146,6 +147,7 @@ def update_opportunity(positionID):
     cursor.close()
 
     return make_response({"message": f"Successfully updated opportunity {positionID}"}, 200)
+
 
 #------------------------------------------------------------
 # Delete a specific opportunity based on the PositionId

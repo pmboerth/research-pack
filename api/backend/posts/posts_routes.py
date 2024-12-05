@@ -5,11 +5,12 @@ from flask import make_response
 from flask import current_app
 from backend.db_connection import db
 
-# create the opportunities blueprint object
+# Blueprint object for all posts routes
 posts = Blueprint('posts', __name__)
 
+
 #------------------------------------------------------------
-# Get all posts from a certain group the system
+# Get all posts in the system from a certain group
 @posts.route('/posts/<pgroup>', methods=['GET'])
 def get_post_by_group(pgroup):
     current_app.logger.info('GET /posts/<pgroup> route')
@@ -22,6 +23,7 @@ def get_post_by_group(pgroup):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
 
 #------------------------------------------------------------
 # Enter a new post into the system
@@ -53,8 +55,9 @@ def add_new_post():
     
     return make_response({"message": "Successfully added post"}, 200)
 
+
 #------------------------------------------------------------
-# Delete a specific post from the system
+# Delete a specific post from the system based on the given PostId
 @posts.route('/posts/p<postID>', methods=['DELETE'])
 def del_post(postID):
     cursor = db.get_db().cursor()    

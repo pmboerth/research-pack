@@ -5,6 +5,7 @@ from flask import make_response
 from flask import current_app
 from backend.db_connection import db
 
+# Blueprint object for all students routes
 students = Blueprint('students', __name__)
 
 
@@ -25,8 +26,9 @@ def get_all_students():
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
-# Get a student info from a specific ID
+# Get student info based on the given StudentId
 @students.route('/students/s<studentID>', methods=['GET'])
 def get_student_name_from_id(studentID):
     current_app.logger.info('GET /students/s<studentID> route')
@@ -40,8 +42,9 @@ def get_student_name_from_id(studentID):
     the_response.status_code = 200
     return the_response
 
+
 #------------------------------------------------------------
-# Get all students with the particular DepartmentID
+# Get all students in a particular department based on the given DepartmentId
 @students.route('/students/d<departmentID>', methods=['GET'])
 def get_students_by_department(departmentID):
     current_app.logger.info('GET /students/d<departmentID> route')
@@ -54,6 +57,7 @@ def get_students_by_department(departmentID):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
 
 #------------------------------------------------------------
 # Add a new student to the system
@@ -95,8 +99,9 @@ def add_new_student():
     
     return make_response({"message": "Successfully added student"}, 200)
 
+
 #------------------------------------------------------------
-# Update a specific student based on their StudentId
+# Update a specific student information based on their StudentId
 @students.route('/students/s<studentID>', methods=['PUT'])
 def update_student(studentID):
     
@@ -140,6 +145,7 @@ def update_student(studentID):
     cursor.close()
 
     return make_response({"message": f"Successfully updated student {studentID}"}, 200)
+
 
 #------------------------------------------------------------
 # Delete a specific student from the system
