@@ -17,7 +17,7 @@ st.write(f"### Hi, {st.session_state['first_name']}.")
 # add a button to use get all students
 if st.button('See All Students',
              type='primary'):
-  results = requests.get('http://api:4000/students')
+  results = requests.get('http://api:4000/s/students')
   
   if results:
        for student in results:
