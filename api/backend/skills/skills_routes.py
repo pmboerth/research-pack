@@ -25,38 +25,4 @@ def get_skill_name_from_id(skillID):
     return the_response
 
 
-#------------------------------------------------------------
-# Add a skill to the database if it does not exist already
-@skills.route('skills/s<skill_name>', methods=['POST'])
-def check_or_add_skill(skill_name):
-    current_app.logger.info('POST /skills/s<skill_name> route')
-    cursor = db.get_db().cursor()
-    
-    # check if skill name exists
-    cursor.execute('SELECT SkillId FROM Skills WHERE Name = %s', (skill_name,))
-
-    theData = cursor.fetchone()
-
-    # if the skill name exists
-    if theData:
-        skill_id = theData[0]
-        cursor.close()
-        the_response = make_response(jsonify(skill_id))
-        the_response.status_code = 200
-        return the_response
-    else:
-        cursor.execute('INSERT INTO Skills (Name) VALUES (%s)', (skill_name,))
-        db.get_db().commit()
-
-        #Get the new skill id
-        cursor.execute('SELECT SkillId FROM Skills WHERE Name = %s', (skill_name,))
-        theData = cursor.fetchone()
-        new_skill_id = theData[0]
-        cursor.close()
-        
-        the_response = make_response(jsonify(new_skill_id))
-        the_response.status_code = 200
-        return the_response
-    
-
     
