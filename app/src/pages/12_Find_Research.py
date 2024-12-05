@@ -15,13 +15,13 @@ st.header('Research Opportunities')
 selected_option = st.selectbox("Choose an Group:", ["Engineering", "Computer Science", 
                                                     "Science", "Health Science", "Social Science", "Business"])
 
-# Get all the research opportunities from the API
-results = requests.get('http://api:4000/o/opportunities').json()
 
 # button to submit the group selection
 if st.button("Submit", type='primary'):
     # make an API request to fetch posts based on selected group
-    response = requests.get(f'http://api:4000/o/opportunities/d{selected_option}')
+    response = requests.get(f'http://api:4000/o/opportunities/{selected_option}')
+    # Get all the research opportunities from the API
+    results = requests.get('http://api:4000/o/opportunities').json()
 
     if results:
         for opportunity in results:
@@ -55,15 +55,6 @@ if st.button("Submit", type='primary'):
                     <p style="margin-bottom: 6px; color: #D1D7DC;"><strong>Created At:</strong> {created_at}</p>
                 </div>
             """, unsafe_allow_html=True)
-
-            # Button to apply for the research opportunity
-            if st.button(f"Apply for {position_name}", type="primary", key=f"apply_o{opportunity_id}"):
-                response = requests.post(f'http://api:4000/a/applications/o{opportunity_id}', json={"applicant_id": applicant_id})
-                
-                if response.status_code == 200:
-                    st.success(f"Successfully applied for: {position_name}")
-                else:
-                    st.error(f"Failed to apply: {response.text}")
             
     else:
         st.warning("No research opportunities")
