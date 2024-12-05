@@ -14,6 +14,7 @@ st.header('Edit Student Information')
 # Add a field to input the student ID for editing
 student_id = st.text_input("Enter Student ID to Edit")
 
+# If a StudentId was entered
 if student_id:
     # Fetch the student's current information using the student ID
     response = requests.get(f'http://api:4000/s/students/s{student_id}')

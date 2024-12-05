@@ -7,10 +7,13 @@ import requests
 
 st.set_page_config(layout = 'wide')
 
+# Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
+# Display welcome message with user's first name
 st.title('Welcome Professor Chen!')
 
+# Buttons to navigate to other pages
 if st.button('Post Research Position', 
              type='primary',
              use_container_width=True):

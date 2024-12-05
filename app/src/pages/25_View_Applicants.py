@@ -7,10 +7,12 @@ import requests
 
 st.set_page_config(layout = 'wide')
 
+# Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
 application_data = st.session_state.get('view_applicants', {})
 
+# If there is application data, provide a form to fill out updated information
 if application_data:
     position_id = application_data['position_id']
     research_title = application_data['research_title']
@@ -54,6 +56,7 @@ if application_data:
                     </div>
                 """, unsafe_allow_html=True)
     
+# Button to go back to the positions page
 if st.button("Back"):
     st.switch_page('pages/22_Posted_Positions.py')   
         

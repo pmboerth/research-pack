@@ -98,4 +98,6 @@ if st.button('Generate Engagement Report',
     else:
         st.error("Failed to fetch department data. Please try again.")
 
-# Back button 
+# Back button
+if st.button("Back"):
+    st.switch_page('pages/30_Admin_Home.py')

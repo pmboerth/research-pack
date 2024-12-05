@@ -7,12 +7,15 @@ import requests
 
 st.set_page_config(layout = 'wide')
 
+# Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
+# Set the header of the page
 st.title('View a Students List of Applications')
 
 student_id = st.text_input("Enter a Students ID:")
 
+# Button to view applications for the particular StudentId
 if st.button("View Applications",type="primary"):
     # Check if the student ID is valid
     response_student = requests.get(f'http://api:4000/s/students/s{student_id}')
@@ -21,12 +24,11 @@ if st.button("View Applications",type="primary"):
         student_data = response_student.json()
         student_name = student_data[0].get('FirstName', 'No First Name') + ' ' + student_data[0].get('LastName', 'No Last Name')
 
-        st.title(f'Applications Submitted by {student_name}')
+        st.subheader(f'Applications Submitted by {student_name}')
 
         response = requests.get(f'http://api:4000/a/applications/s{student_id}')
         if response.status_code == 200:
             result = response.json()
-
             if result:
                 for application in result:
                     status = application.get('ApplicationStatus', 'No Status')
@@ -51,5 +53,6 @@ if st.button("View Applications",type="primary"):
     else:
         st.warning("Please enter a valid student ID to view their applications.")
 
+# Button to go back to the home page
 if st.button("Back"):
     st.switch_page('pages/20_Professor_Home.py')

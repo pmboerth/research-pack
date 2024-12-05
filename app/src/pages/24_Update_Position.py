@@ -7,10 +7,12 @@ import requests
 
 st.set_page_config(layout = 'wide')
 
+# Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
 position_data = st.session_state.get('update_position', {})
 
+# If there is position data, provide new information form
 if position_data:
     position_id = position_data['position_id']
     research_title = position_data['research_title']
@@ -45,6 +47,7 @@ if position_data:
 else:
     st.error("No position data found. Please go back and select a position to update.")
 
+# Button to go back to the position page
 if st.button("Back"):
     st.switch_page('pages/22_Posted_Positions.py')
 

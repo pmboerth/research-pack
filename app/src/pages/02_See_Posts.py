@@ -23,7 +23,7 @@ if st.button("Submit", type='primary'):
         results = response.json()
         if results:
             for post in results:
-                # Loop through each post and display details
+                # Loop through each post and assign variables
                 post_title = post.get('PostTitle', 'No Title')
                 post_content = post.get('PostContent', 'No Content Available')
                 creator_id = post.get('CreatorId', 'Unknown')

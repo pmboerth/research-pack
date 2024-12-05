@@ -7,11 +7,13 @@ import requests
 
 st.set_page_config(layout = 'wide')
 
-# Import sidebar links
+# Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
+# Set the header of the page
 st.title('Post a Research Opportunity')
 
+# Input fields for opportunity details
 research_title = st.text_input("Enter a Research Position Title:")
 
 professorid = st.session_state['professor_id']
@@ -24,7 +26,7 @@ department_id = st.session_state['department_id']
 
 skill_id = st.text_input("Enter a Skill ID:")
 
-
+# Post opportunity if fields are filled and call the API
 if st.button("Post Opportunity",
              type="primary"):
     if research_title and research_area and research_description and skill_id:
@@ -47,5 +49,6 @@ if st.button("Post Opportunity",
     else:
         st.warning("Please fill out all required fields.")
 
+# Button to go back to the home page    
 if st.button("Back"):
     st.switch_page('pages/20_Professor_Home.py')
