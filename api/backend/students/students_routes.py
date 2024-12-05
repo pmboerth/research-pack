@@ -26,12 +26,12 @@ def get_all_students():
     return the_response
 
 #------------------------------------------------------------
-# Get a student name from a specific ID
+# Get a student info from a specific ID
 @students.route('/students/s<studentID>', methods=['GET'])
 def get_student_name_from_id(studentID):
     current_app.logger.info('GET /students/s<studentID> route')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT FirstName, LastName FROM Students WHERE StudentId = %s', (studentID,))
+    cursor.execute('SELECT FirstName, LastName, Email, Major, Year, StudentType, Research Interest FROM Students WHERE StudentId = %s', (studentID,))
     
     theData = cursor.fetchall()
     cursor.close()
