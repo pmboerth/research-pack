@@ -34,10 +34,10 @@ if st.button('Make Profile',
              use_container_width=True):
   st.switch_page('pages/14_Make_Profile.py')
 
-if st.button('Messages', 
+if st.button('See Applications', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/15_Messages.py')
+  st.switch_page('pages/15_Applications.py')
 
 if st.button('Add Comment', 
              type='primary',
