@@ -30,6 +30,9 @@ if response.status_code == 200:
             result1 = requests.get(f'http://api:4000/d/departments/d{department_id}').json()
             department_name = result1[0].get('Name', 'No Name')
     
+            # Fetch skill name based on skill ID
+            result2 = requests.get(f'http://api:4000/sk/skills/s{skill_id}').json()
+            skill_name = result2[0].get('Name', 'No Name')
 
 
             # Display each post using styled HTML
@@ -39,7 +42,7 @@ if response.status_code == 200:
                     <p style="margin-bottom: 8px; color: #D1D7DC;"><strong>Faculty: </strong>Professor Emily Chen</p>
                     <p style="margin-bottom: 8px; color: #D1D7DC;"><strong>Research Area: </strong> {research_area}</p>
                     <p style="margin-bottom: 8px; color: #D1D7DC;"><strong>Department: </strong> {department_name}</p>
-                    <p style="margin-bottom: 8px; color: #D1D7DC;"><strong>Required Skill:</strong> {skill_id}</p>
+                    <p style="margin-bottom: 8px; color: #D1D7DC;"><strong>Required Skill:</strong> {skill_name}</p>
                     <p style="margin-bottom: 12px; color: #D1D7DC;"><strong>Description:</strong> {research_description}</p>
                 </div>
             """, unsafe_allow_html=True)

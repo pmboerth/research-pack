@@ -7,6 +7,7 @@ from backend.students.students_routes import students
 from backend.applications.applications_routes import applications
 from backend.departments.departments_routes import departments
 from backend.professors.professors_routes import professors
+from backend.skills.skills_routes import skills
 import os
 from dotenv import load_dotenv
 
@@ -48,6 +49,7 @@ def create_app():
     app.register_blueprint(applications, url_prefix='/a')
     app.register_blueprint(departments, url_prefix='/d')
     app.register_blueprint(professors, url_prefix='/pr')
+    app.register_blueprint(skills, url_prefix='/sk')
 
 
 
