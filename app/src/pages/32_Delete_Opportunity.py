@@ -42,8 +42,8 @@ if results:
             </div>
         """, unsafe_allow_html=True)
         
-        if st.button(f"Delete {position_name}", type="primary"):
-            response = requests.delete(f'http://api:4000/a/applications/o{opportunity_id}')
+        if st.button(f"Delete {position_name}", type="primary", key=f"delete_o{opportunity_id}"):
+            response = requests.delete(f'http://api:4000/o/opportunities/p{opportunity_id}')
             
             if response.status_code == 200:
                 st.success(f"Successfully deleted: {position_name}")
