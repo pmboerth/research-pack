@@ -12,7 +12,8 @@ SideBarLinks()
 st.header('Student Engagement Report')
 
 # Add a button to fetch and display the report
-if st.button('Generate Engagement Report'):
+if st.button('Generate Engagement Report',
+             type="primary"):
     # Get all departments
     departments_response = requests.get('http://api:4000/d/departments')
     
