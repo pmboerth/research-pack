@@ -27,7 +27,7 @@ if st.button('Generate Engagement Report'):
         # For each department, get the number of applications per research opportunity
         for department_id, department_name in zip(department_ids, department_names):
             # Fetch research opportunities for the department
-            opportunities_response = requests.get(f'http://api:4000/r/{department_id}/research_opportunities')
+            opportunities_response = requests.get(f'http://api:4000/o/opportunities/d{department_id}')
 
             if opportunities_response.status_code == 200:
                 opportunities = opportunities_response.json()
@@ -92,4 +92,4 @@ if st.button('Generate Engagement Report'):
 
 # Back button to return to admin home page
 if st.button("Back"):
-    st.switch_page('pages/00_Admin_Home.py')
+    st.switch_page('pages/30_Admin_Home.py')
