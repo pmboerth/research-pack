@@ -25,6 +25,7 @@ if response.status_code == 200:
             research_description = position.get('Description', 'No Description')
             department_id = position.get('DepartmentId', 'No Department')
             skill_id = position.get('SkillId', 'No Skill')
+            position_id = position.get('PositionId', 'No Position')
             
             # Fetch department name based on department ID
             result1 = requests.get(f'http://api:4000/d/departments/d{department_id}').json()
@@ -46,6 +47,18 @@ if response.status_code == 200:
                     <p style="margin-bottom: 12px; color: #D1D7DC;"><strong>Description:</strong> {research_description}</p>
                 </div>
             """, unsafe_allow_html=True)
+
+            if st.button(f"Update", type="primary", key=f"apply_p{position_id}"):
+                
+                st.session_state['update_position'] = {
+                    'position_id': position_id,
+                    'research_title': research_title,
+                    'research_area': research_area,
+                    'research_description': research_description,
+                    'department_id': department_id,
+                    'skill_id': skill_id
+                }
+                st.switch_page('pages/24_Update_Position.py')
     else:
         st.warning("No posts found for the selected group.")
 else:
