@@ -37,7 +37,7 @@ if st.button('Generate Engagement Report',
                     opportunity_id = opportunity.get('OpportunityId')
                     
                     # Fetch applications for each research opportunity
-                    applications_response = requests.get(f'http://api:4000/a/opportunity/{opportunity_id}/applications')
+                    applications_response = requests.get(f'http://api:4000/a/applications/o{opportunity_id}')
 
                     if applications_response.status_code == 200:
                         applications = applications_response.json()
