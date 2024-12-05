@@ -66,6 +66,7 @@ if st.button('Act as Emily Chen, an Associate Professor',
     st.session_state['role'] = 'professor'
     st.session_state['first_name'] = 'Emily'
     st.session_state['professor_id'] = 1
+    st.session_state['department_id'] = 1
     st.switch_page('pages/20_Professor_Home.py')
 
 if st.button('Act as Carl Jackson, a Department Administrator',

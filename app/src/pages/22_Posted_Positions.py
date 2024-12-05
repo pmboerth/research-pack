@@ -11,6 +11,7 @@ SideBarLinks()
 
 st.title('My Posted Research Positions')
 
+
 # if st.button('View Submitted Applications', 
 #              type='primary',
 #              use_container_width=True):
