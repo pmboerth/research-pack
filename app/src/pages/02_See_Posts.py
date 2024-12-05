@@ -9,11 +9,12 @@ SideBarLinks()
 
 st.header('Find Posts By Group')
 
+# provide a drpdown for the user to select a group
 selected_option = st.selectbox("Choose an Group:", ["Engineering", "Computer Science", 
                                                     "Science", "Health Science", "Social Science", "Business"])
-
-if st.button("Submit",
-             type='primary'):
+# button to submit the group selection
+if st.button("Submit", type='primary'):
+    # make an API request to fetch posts based on selected group
     response = requests.get(f'http://api:4000/p/posts/{selected_option}')
     
     if response.status_code == 200:
@@ -21,6 +22,7 @@ if st.button("Submit",
 
         if results:
             for post in results:
+                # loop through each post and display details
                 post_title = post.get('PostTitle', 'No Title')
                 post_content = post.get('PostContent', 'No Content Available')
                 creator_id = post.get('CreatorId', 'Unknown')
@@ -28,11 +30,12 @@ if st.button("Submit",
                 updated_at = post.get('UpdatedAt', 'No Date Available')
                 post_type = post.get('PostType', 'Unknown')
                 post_group = post.get('PGroup', 'Unknown')
-                
+
+                # fetch the students name who created the post based on creator ID
                 result1 = requests.get(f'http://api:4000/s/students/s{creator_id}').json()
                 student_name = result1[0].get('FirstName', 'Unknown') + " " + result1[0].get('LastName', '')
 
-                # Display each post using styled HTML
+                # display each post using styled HTML
                 st.markdown(f"""
                     <div style="border: 1px solid #3D4A59; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); background-color: #3D4A59;">
                         <h3 style="margin-bottom: 10px; color: #90AEAD;">{post_title}</h3>
