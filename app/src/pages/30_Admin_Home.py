@@ -19,27 +19,17 @@ if st.button('See all Research Opportunities',
              use_container_width=True):
   st.switch_page('pages/31_All_Opps_Admin.py')
 
-if st.button('Delete uncompliant Research Opportunities', 
-             type='primary',
-             use_container_width=True):
-  st.switch_page('pages/32_Delete_Opportunity.py')
-
 if st.button('See all Students', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/33_All_Students.py')
+  st.switch_page('pages/33_All_Student_Admin.py')
 
-if st.button('Remove ineligible Students', 
+if st.button('Generate Reports on Student Engagement', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/34_Remove_Student.py')
+  st.switch_page('pages/33_Generate_Report.py')
 
-if st.button('Generate reports on student engagement', 
+if st.button('Update Student Profiles', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/35_Generate_Report.py')
-
-if st.button('Update Student profiles', 
-             type='primary',
-             use_container_width=True):
-  st.switch_page('pages/36_Update_Student.py')
+  st.switch_page('pages/34_Update_Student.py')

@@ -41,6 +41,15 @@ if results:
                 <p style="margin-bottom: 6px; color: #D1D7DC;"><strong>Created At:</strong> {created_at}</p>
             </div>
         """, unsafe_allow_html=True)
+        
+        if st.button(f"Delete {position_name}", type="primary", key=f"delete_o{opportunity_id}"):
+            response = requests.delete(f'http://api:4000/o/opportunities/p{opportunity_id}')
+            
+            if response.status_code == 200:
+                st.success(f"Successfully deleted: {position_name}")
+            else:
+                st.error(f"Failed to delete: {response.text}")
+        
 else:
     st.warning("No research opportunities")
 
