@@ -18,3 +18,28 @@ if st.button('Find Students',
              type='primary',
              use_container_width=True):
   st.switch_page('pages/11_Find_Students.py')
+
+if st.button('Find Research', 
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/12_Find_Research.py')
+
+if st.button('Make a Post', 
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/13_Make_Post.py')
+
+if st.button('Make Profile', 
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/14_Make_Profile.py')
+
+if st.button('Messages', 
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/15_Messages.py')
+
+if st.button('Add Comment', 
+             type='primary',
+             use_container_width=True):
+  st.switch_page('pages/16_Add_Comment.py')
