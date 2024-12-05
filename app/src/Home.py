@@ -55,6 +55,7 @@ if st.button('Act as Jeff Sturrow, a PhD Student',
     st.session_state['role'] = 'graduate_student'
     st.session_state['first_name'] = 'Jeff'
     st.session_state['student_id'] = 2
+    st.session_state['department_id'] = 2
     st.switch_page('pages/10_Graduate_Home.py')
 
 
