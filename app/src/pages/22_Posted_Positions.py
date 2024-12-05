@@ -48,17 +48,33 @@ if response.status_code == 200:
                 </div>
             """, unsafe_allow_html=True)
 
-            if st.button(f"Update", type="primary", key=f"apply_p{position_id}"):
-                
-                st.session_state['update_position'] = {
-                    'position_id': position_id,
-                    'research_title': research_title,
-                    'research_area': research_area,
-                    'research_description': research_description,
-                    'department_id': department_id,
-                    'skill_id': skill_id
-                }
-                st.switch_page('pages/24_Update_Position.py')
+            col1, col2 = st.columns([1, 15])
+
+            with col1:
+
+                if st.button(f"Update", type="primary", key=f"apply_p{position_id}"):
+                    
+                    st.session_state['update_position'] = {
+                        'position_id': position_id,
+                        'research_title': research_title,
+                        'research_area': research_area,
+                        'research_description': research_description,
+                        'department_id': department_id,
+                        'skill_id': skill_id
+                    }
+                    st.switch_page('pages/24_Update_Position.py')
+            with col2:
+                if st.button(f"Delete",  type="primary", key=f"delete_p{position_id}"):
+                    response = requests.delete(f'http://api:4000/o/opportunities/p{position_id}')
+
+                    if response.status_code == 200:
+                        st.success(f"Successfully deleted: {research_title}.")
+                    else:
+                        st.error(f"Failed to delete: {response.text}")
+
+
+
+            
     else:
         st.warning("No posts found for the selected group.")
 else:

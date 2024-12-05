@@ -30,15 +30,15 @@ if st.button("Post Opportunity",
     if research_title and research_area and research_description and skill_id:
             
             post = {
-                "research_title": research_title,
-                "professor_id": professorid,
+                "name": research_title,
+                "owner_id": professorid,
                 "research_area": research_area,
-                "research_description": research_description,
+                "description": research_description,
                 "department_id": department_id,
                 "skill_id": skill_id
             }
             
-            response = requests.post("http://api:4000/opportunities", json=post)
+            response = requests.post("http://api:4000/o/opportunities", json=post)
             
             if response.status_code == 200:
                 st.success("Research Opportunity successfully added!")
