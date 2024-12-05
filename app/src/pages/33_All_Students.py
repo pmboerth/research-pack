@@ -17,7 +17,7 @@ st.write(f"### Hi, {st.session_state['first_name']}.")
 # add a button to use get all students
 if st.button('See All Students',
              type='primary'):
-  results = requests.get('http://api:4000/s/students')
+  results = requests.get('http://api:4000/s/students').json()
   
   if results:
        for student in results:
@@ -55,4 +55,4 @@ if st.button('See All Students',
 
 
 if st.button("Back"):
-    st.switch_page('pages/00_Admin_Home.py')
+    st.switch_page('pages/30_Admin_Home.py')
