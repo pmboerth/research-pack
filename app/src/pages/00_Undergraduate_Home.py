@@ -9,16 +9,19 @@ st.set_page_config(layout = 'wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
+# Display welcome message with user's first name
 st.title(f"Welcome {st.session_state['first_name']}.")
 st.write('')
 st.write('')
 st.write('### What would you like to do today?')
 
+# Prompt user with options for their next action
 if st.button('See all Research Opportunities', 
              type='primary',
              use_container_width=True):
   st.switch_page('pages/01_All_Opportunities.py')
 
+# Buttons to navigate to other pages
 if st.button('See Posts', 
              type='primary',
              use_container_width=True):
