@@ -11,6 +11,7 @@ st.header('Update Student Information')
 
 student_id = st.session_state['student_id']
 
+# input fields for updating student information
 first_name = st.text_input("First Name")
 last_name = st.text_input("Last Name")
 email = st.text_input("Email")
@@ -21,6 +22,7 @@ year = st.text_input("Graduation Year")
 major = st.text_input("Major")
 student_type = st.selectbox("Student Type", ["Undergraduate", "Graduate"])
 
+# update student information if button is clicked
 if st.button("Update Student", type="primary"):
     if not student_id:
         st.error("Student ID is required.")
@@ -55,7 +57,8 @@ if st.button("Update Student", type="primary"):
                 st.success(f"Successfully updated student {student_id}.")
             else:
                 st.error(f"Error: {response.status_code} - {response.text}")
-                
+
+# navigate to home page
 if st.button("Back"):
     st.switch_page('pages/00_Undergraduate_Home.py')
 
