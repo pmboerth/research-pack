@@ -31,7 +31,7 @@ if st.button("View Applications", type="primary"):
 
             if applications:
                 for application in applications:
-                    student_id = application.get('StudentId', 'No Student ID')
+                    student_id = application.get('ApplicantId', 'No Student ID')
                     status = application.get('ApplicationStatus', 'No Status')
                     created_at = application.get('CreatedAt', 'No Date Available')
 
@@ -40,7 +40,7 @@ if st.button("View Applications", type="primary"):
                     if student_response.status_code == 200:
                         student_data = student_response.json()
                         if student_data:
-                            student_name = student_data[0].get('FirstName', 'Unknown') + ' ' + student_data[0].get('LastName', 'Unknown')
+                            student_name = student_data[0].get('FirstName') + ' ' + student_data[0].get('LastName')
                         else:
                             student_name = "No applications found for this opportunity."
                     else:

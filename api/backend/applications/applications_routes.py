@@ -31,7 +31,7 @@ def get_all_applications():
 def get_applications_for_opportunity(opportunityID):
     current_app.logger.info('GET /applications/o<opportuntiyID> route')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Applications WHERE PositionId = {0}'.format(opportunityID))
+    cursor.execute('SELECT * FROM Applications WHERE PositionId = %s', (opportunityID))
     
     theData = cursor.fetchall()
     cursor.close()
@@ -45,9 +45,9 @@ def get_applications_for_opportunity(opportunityID):
 # Get all applications from a specific student based on the StudentId
 @applications.route('/applications/s<studentID>', methods=['GET'])
 def get_applications_by_student(studentID):
-    current_app.logger.info('GET /applications/o<opportuntiyID> route')
+    current_app.logger.info('GET /applications/s<studentID> route')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Applications WHERE ApplicantId = {0}'.format(studentID))
+    cursor.execute('SELECT * FROM Applications WHERE ApplicantId = %s', (studentID))
     
     theData = cursor.fetchall()
     cursor.close()

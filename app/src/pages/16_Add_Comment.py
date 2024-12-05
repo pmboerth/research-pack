@@ -9,7 +9,7 @@ SideBarLinks()
 st.header('Create a New Comment')
 
 # Input fields for comment details
-post_id = st.text_input("Enter the Post ID you want to add a Comment to:")
+post_id = st.number_input("Enter the Post ID you want to add a Comment to:", min_value=1, step=1)
 comment_content = st.text_area("Enter the Comment Content:")
 
 # Submit comment if fields are filled and call the API

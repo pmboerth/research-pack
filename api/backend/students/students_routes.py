@@ -31,7 +31,7 @@ def get_all_students():
 # Get student info based on the given StudentId
 @students.route('/students/s<studentID>', methods=['GET'])
 def get_student_name_from_id(studentID):
-    current_app.logger.info('GET /students/s<studentID> route')
+    current_app.logger.info(f'GET /students/s<studentID> route')
     cursor = db.get_db().cursor()
     cursor.execute('SELECT FirstName, LastName, Email, Major, Year, StudentType, ResearchInterest FROM Students WHERE StudentId = %s', (studentID,))
     

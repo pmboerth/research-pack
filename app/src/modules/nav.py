@@ -49,7 +49,7 @@ def GraduateMakePost():
     st.sidebar.page_link("pages/13_Make_Post.py", label="Posts", icon="3️⃣")
     
 def GraduateUpdateProfile():
-    st.sidebar.page_link("pages/14_Make_Profile.py", label="Update Profile", icon="4️⃣")
+    st.sidebar.page_link("pages/14_Make_Profile.py", label="Create Profile", icon="4️⃣")
 
 def GraduateSeeApps():
     st.sidebar.page_link("pages/15_See_Applications.py", label="Applications", icon="5️⃣")

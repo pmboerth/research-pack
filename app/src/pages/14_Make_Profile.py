@@ -22,7 +22,7 @@ major = st.text_input("Major")
 student_type = st.selectbox("Student Type", ["Graduate"])
 
 # Submit button to create the student profile
-if st.button("Update Profile", type="primary"):
+if st.button("Create Profile", type="primary"):
     if first_name and last_name and email and skill_id and department_id and research_interest and year and major:
         # Prepare the data to send to the API
         student_data = {
