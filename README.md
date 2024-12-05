@@ -20,10 +20,17 @@ Search and Filter: Users can filter posts by group or research area to find oppo
 - SQL Database: A relational database for storing user and research opportunity data.
 - Docker: Containerization platform for packaging the app with all dependencies for easy deployment.
 - Requests: For making HTTP requests to interact with APIs.
-- Pandas: For data manipulation (if applicable to the project).
+- Pandas: For data manipulation.
 
 
-## Current Project Components
+# Getting Started
+
+## Prerequisites
+
+Ensure you have the following tools installed:
+
+- Docker: Make sure Docker is installed and running on your machine. You can download it from here.
+- Python (if you are running locally, though Docker handles dependencies automatically): Version 3.6 or higher.
 
 Currently, there are three major components which will each run in their own Docker Containers:
 
@@ -31,5 +38,21 @@ Currently, there are three major components which will each run in their own Doc
 - Flask REST api in the `./api` directory
 - SQL files for your data model and data base in the `./database-files` directory
 
-## Suggestion for Learning the Project Code Base
- 
+## File Structure
+
+/research-opportunities-app
+│
+├── app/                         # Front-end Streamlit application
+│   ├── __init__.py
+│   ├── pages/                   # Page components for Streamlit
+│   ├── components/              # Reusable components like navigation, buttons, etc.
+│   └── utils/                   # Helper functions
+│
+├── db/                          # Database setup and queries
+│   ├── migrations/              # SQL scripts for creating tables
+│   └── queries.py               # Database query functions
+│
+├── Dockerfile                   # Docker configuration for the app
+├── docker-compose.yml           # Docker Compose configuration to orchestrate the containers
+├── requirements.txt             # Python dependencies
+└── README.md                    # Project documentation
