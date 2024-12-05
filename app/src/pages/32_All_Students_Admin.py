@@ -55,7 +55,8 @@ if response.status_code == 200:
             </div>
             """, unsafe_allow_html=True)
 
-            if st.button(f"Delete {student_firstname} {student_lastname}", key=f"delete_{student_id}"):
+            if st.button(f"Delete {student_firstname} {student_lastname}", key=f"delete_{student_id}",
+                         type="primary"):
                 delete_response = requests.delete(f'http://api:4000/s/students/s{student_id}')
                 
                 if delete_response.status_code == 200:
