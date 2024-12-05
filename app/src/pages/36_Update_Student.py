@@ -16,7 +16,7 @@ student_id = st.text_input("Enter Student ID to Edit")
 
 if student_id:
     # Fetch the student's current information using the student ID
-    response = requests.get(f'http://api:4000/students/s{student_id}')
+    response = requests.get(f'http://api:4000/s/students/s{student_id}')
     
     if response.status_code == 200:
         student = response.json()
@@ -69,7 +69,7 @@ if student_id:
                 }
 
                 # Send the PUT request to update the student information
-                update_response = requests.put(f'http://api:4000/students/s{student_id}', json=updated_data)
+                update_response = requests.put(f'http://api:4000/s/students/s{student_id}', json=updated_data)
 
                 if update_response.status_code == 200:
                     st.success(f"Successfully updated information for {new_firstname} {new_lastname}.")
@@ -82,4 +82,4 @@ if student_id:
         
 # Back button to return to admin home page
 if st.button("Back"):
-    st.switch_page('pages/00_Admin_Home.py')
+    st.switch_page('pages/30_Admin_Home.py')
