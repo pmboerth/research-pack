@@ -9,7 +9,7 @@ SideBarLinks()
 st.header('Create a New Comment')
 
 # Input fields for comment details
-post_id = st.text_input("Enter the Post ID you are commenting on:")
+post_id = st.text_input("Enter the Post ID you want to add a Comment to:")
 comment_content = st.text_area("Enter the Comment Content:")
 
 # Submit comment if fields are filled and call the API
@@ -17,6 +17,7 @@ if st.button("Submit Comment", type="primary"):
     if post_id and comment_content:
         comment = {
             "post_id": post_id,
+            "owner_id": st.session_state['student_id'],
             "comment_content": comment_content
         }
         
@@ -28,6 +29,7 @@ if st.button("Submit Comment", type="primary"):
             st.error(f"Failed to add comment: {response.status_code} - {response.text}")
     else:
         st.warning("Please fill out all required fields.")
-        
+
+# Button to go back to the home page
 if st.button("Back"):
     st.switch_page('pages/10_Graduate_Home.py')
