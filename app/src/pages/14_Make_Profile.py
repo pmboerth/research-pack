@@ -17,12 +17,12 @@ email = st.text_input("Email")
 skill_id = st.number_input("Skill ID", min_value=1, step=1)
 department_id = st.number_input("Department ID", min_value=1, step=1)
 research_interest = st.text_input("Research Interest")
-year = st.text_input("Graduation Year")
+year = st.number_input("Year", min_value=1, step=1)
 major = st.text_input("Major")
 student_type = st.selectbox("Student Type", ["Graduate"])
 
 # Submit button to create the student profile
-if st.button("Create Profile", type="primary"):
+if st.button("Update Profile", type="primary"):
     if first_name and last_name and email and skill_id and department_id and research_interest and year and major:
         # Prepare the data to send to the API
         student_data = {

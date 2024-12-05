@@ -52,4 +52,4 @@ else:
     st.warning("No Students")
 
 if st.button('Back'):
-    st.switch_page('/pages/10_Graduate_Home.py')
+    st.switch_page('pages/10_Graduate_Home.py')

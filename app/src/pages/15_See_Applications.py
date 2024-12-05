@@ -22,7 +22,7 @@ if st.button("View Applications", type="primary"):
         opportunity_data = response_opportunity.json()
         opportunity_name = opportunity_data[0].get('Name', 'No Opportunity Name')
 
-        st.title(f'Applications Submitted for: {opportunity_name}')
+        st.subheader(f'Applications Submitted for: {opportunity_name}')
 
         # Fetch all applications for the specified opportunity ID
         response = requests.get(f'http://api:4000/a/applications/o{opportunity_id}')
@@ -61,3 +61,7 @@ if st.button("View Applications", type="primary"):
             st.error(f"Failed to retrieve applications: {response.status_code} - {response.text}")
     else:
         st.warning("Please enter a valid Opportunity ID to view the applications.")
+        
+# Back button to return to the home page
+if st.button("Back"):
+    st.switch_page('pages/10_Graduate_Home.py')
