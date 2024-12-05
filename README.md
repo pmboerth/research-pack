@@ -14,38 +14,26 @@ Post New Opportunities: Students and professors can post new opportunities for c
 Profile Update: Users can update their profile information, such as skills, department, and research interests.
 Search and Filter: Users can filter posts by group or research area to find opportunities that match their interests.
 
-## Prerequisites
-
-- Streamlit: A Python-based framework for building interactive web applications.
-- SQL Database: A relational database for storing user and research opportunity data.
-- Docker: Containerization platform for packaging the app with all dependencies for easy deployment.
-- Requests: For making HTTP requests to interact with APIs.
-- Pandas: For data manipulation.
-
-
 # Getting Started
 
 ## Prerequisites
 
 Ensure you have the following tools installed:
 
-- Docker: Make sure Docker is installed and running on your machine. You can download it from here
-- Python
+- Streamlit: A Python-based framework for building interactive web applications.
+- SQL Database: A relational database for storing user and research opportunity data.
+- Docker: Containerization platform for packaging the app with all dependencies for easy deployment.
+- Requests: For making HTTP requests to interact with APIs.
+- Pandas: For data manipulation.
+- Python.
 
 Currently, there are three major components which will each run in their own Docker Containers:
 
 - Streamlit App in the `./app` directory
 - Flask REST api in the `./api` directory
-- SQL files for your data model and data base in the `./database-files` directory
+- SQL files for the data model and data base in the `./database-files` directory
 
 ## Running the Application
-
-### Prerequisites
-
-Ensure you have the following tools installed:
-
-1. **Docker**: Make sure Docker is installed and running on your machine.
-2. **Python**.
 
 ### Running with Docker
 
