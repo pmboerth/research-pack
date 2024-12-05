@@ -38,6 +38,25 @@ def UpdateStudentInfo():
 ## ------------------------ Role of graduate_student ------------------------
 def GraduateStudentHome():
     st.sidebar.page_link("pages/10_Graduate_Home.py", label="Graduate Home", icon="0️⃣")
+    
+def GraduateFindStudents():
+    st.sidebar.page_link("pages/11_Find_Students.py", label="Students", icon="1️⃣")
+    
+def GraduateFindResearch():
+    st.sidebar.page_link("pages/12_Find_Research.py", label="Research", icon="2️⃣")
+    
+def GraduateMakePost():
+    st.sidebar.page_link("pages/13_Make_Post.py", label="Posts", icon="3️⃣")
+    
+def GraduateUpdateProfile():
+    st.sidebar.page_link("pages/14_Make_Profile.py", label="Update Profile", icon="4️⃣")
+
+def GraduateSeeApps():
+    st.sidebar.page_link("pages/15_See_Applications.py", label="Applications", icon="5️⃣")
+    
+def GraduateAddComment():
+    st.sidebar.page_link("pages/16_Add_Comment.py", label="Comments", icon="6️⃣")
+    
 
 
 ## ------------------------ Role of professor --------------------------------
@@ -103,6 +122,12 @@ def SideBarLinks(show_home=False):
         # If the user role is graduate_student, give them access to graduate pages
         if st.session_state["role"] == "graduate_student":
             GraduateStudentHome()
+            GraduateFindStudents()
+            GraduateFindResearch()
+            GraduateMakePost()
+            GraduateUpdateProfile()
+            GraduateSeeApps()
+            GraduateAddComment()
 
         # If the user is an professor, give them access to the professor pages
         if st.session_state["role"] == "professor":
