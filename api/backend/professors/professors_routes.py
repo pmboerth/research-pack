@@ -14,7 +14,7 @@ professors = Blueprint('professors', __name__)
 def get_professor_name_from_id(professorID):
     current_app.logger.info('GET /professors/p<professorID> route')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT FirstName, LastName FROM Professors WHERE ProfessorId = %s', (professorID,))
+    cursor.execute('SELECT FirstName, LastName, Email FROM Professors WHERE ProfessorId = %s', (professorID,))
     
     theData = cursor.fetchall()
     cursor.close()
