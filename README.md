@@ -9,10 +9,10 @@ The application is built using Streamlit for the front-end and is integrated wit
 
 ## Features
 
-Research Opportunities: View, apply for, and manage research opportunities posted by users.
-Post New Opportunities: Students and professors can post new opportunities for collaboration or research.
-Profile Update: Users can update their profile information, such as skills, department, and research interests.
-Search and Filter: Users can filter posts by group or research area to find opportunities that match their interests.
+- Research Opportunities: View, apply for, and manage research opportunities posted by users.
+- Post New Opportunities: Students and professors can post new opportunities for collaboration or research.
+- Profile Update: Users can update their profile information, such as skills, department, and research interests.
+- Search and Filter: Users can filter posts by group or research area to find opportunities that match their interests.
 
 # Getting Started
 
@@ -20,18 +20,26 @@ Search and Filter: Users can filter posts by group or research area to find oppo
 
 Ensure you have the following tools installed:
 
-- Streamlit: A Python-based framework for building interactive web applications.
-- SQL Database: A relational database for storing user and research opportunity data.
-- Docker: Containerization platform for packaging the app with all dependencies for easy deployment.
-- Requests: For making HTTP requests to interact with APIs.
-- Pandas: For data manipulation.
-- Python.
+- Frontend: Streamlit
+- Backend: Flask API
+- Database: SQL
+- Containerization: Docker
+- Other dependencies: Pandas, Requests
 
 Currently, there are three major components which will each run in their own Docker Containers:
 
 - Streamlit App in the `./app` directory
 - Flask REST api in the `./api` directory
 - SQL files for the data model and data base in the `./database-files` directory
+
+### Folder Information
+
+Folder Structure:
+
+- /app                - Contains the Streamlit frontend app, responsible for displaying the user interface and handling user interactions.
+- /api                - Contains the Flask backend API, which handles HTTP requests, manages business logic, and interacts with the database.
+- /database-files     - Contains SQL database schema and setup files, which define the structure of the database and initialize it with necessary data.
+
 
 ## Running the Application
 
