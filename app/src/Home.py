@@ -73,7 +73,7 @@ if st.button('Act as Carl Jackson, a Department Administrator',
              type = 'primary',
              use_container_width=True):
     st.session_state['authenticated'] = True
-    st.session_state['role'] = 'administrator'
+    st.session_state['role'] = 'admin'
     st.session_state['first_name'] = 'Carl'
     st.session_state['admin_id'] = 1
     st.switch_page('pages/30_Admin_Home.py')

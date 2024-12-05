@@ -48,7 +48,24 @@ def ProfessorHome():
 def AdminHome():
     st.sidebar.page_link("pages/30_Admin_Home.py", label="Admin Home", icon="0️⃣")
     
+def AdminResearchOpportunities():
+    st.sidebar.page_link(
+        "pages/31_All_Opps_Admin.py", label="Research Opportunities", icon="1️⃣")
 
+def DeleteResearchOpportunities():
+    st.sidebar.page_link("pages/32_Delete_Opportunity.py", label="Delete Opportunity", icon="2️⃣")
+    
+def AllStudents():
+    st.sidebar.page_link("pages/33_All_Students.py", label="Students", icon="3️⃣")
+    
+def RemoveStudent():
+    st.sidebar.page_link("pages/34_Remove_Student.py", label="Remove Student", icon="4️⃣")
+
+def GenerateReport():
+    st.sidebar.page_link("pages/35_Generate_Report.py", label="Reports", icon="5️⃣")
+    
+def AdminUpdateStudentInfo():
+    st.sidebar.page_link("pages/36_Update_Student.py", label="Update Student", icon="6️⃣")
 
 
 # --------------------------------Links Function -----------------------------------------------
@@ -92,6 +109,12 @@ def SideBarLinks(show_home=False):
         # If the user is an administrator, give them access to the administrator pages
         if st.session_state["role"] == "admin":
             AdminHome()
+            AdminResearchOpportunities()
+            DeleteResearchOpportunities()
+            AllStudents()
+            RemoveStudent()
+            GenerateReport()
+            AdminUpdateStudentInfo()
 
     if st.session_state["authenticated"]:
         # Always show a logout button if there is a logged in user

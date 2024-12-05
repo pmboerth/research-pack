@@ -11,9 +11,6 @@ SideBarLinks()
 # Set the header of the page
 st.header('Edit Student Information')
 
-# You can access the session state to make a more customized/personalized app experience
-st.write(f"### Hi, {st.session_state['first_name']}.")
-
 # Add a field to input the student ID for editing
 student_id = st.text_input("Enter Student ID to Edit")
 

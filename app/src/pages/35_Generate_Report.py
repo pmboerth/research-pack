@@ -11,9 +11,6 @@ SideBarLinks()
 # Set the header of the page
 st.header('Student Engagement Report')
 
-# You can access the session state to make a more customized/personalized app experience
-st.write(f"### Hi, {st.session_state['first_name']}.")
-
 # Add a button to fetch and display the report
 if st.button('Generate Engagement Report'):
     # Get all departments
