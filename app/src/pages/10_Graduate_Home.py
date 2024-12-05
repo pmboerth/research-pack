@@ -31,7 +31,7 @@ if st.button('Make a Post',
              use_container_width=True):
   st.switch_page('pages/13_Make_Post.py')
 
-if st.button('Update Profile', 
+if st.button('Create Profile', 
              type='primary',
              use_container_width=True):
   st.switch_page('pages/14_Make_Profile.py')
