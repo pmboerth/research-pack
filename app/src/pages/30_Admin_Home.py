@@ -24,7 +24,7 @@ if st.button('See all Research Opportunities',
 if st.button('See all Students', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/33_All_Student_Admin.py')
+  st.switch_page('pages/32_All_Students_Admin.py')
 
 if st.button('Generate Reports on Student Engagement', 
              type='primary',
