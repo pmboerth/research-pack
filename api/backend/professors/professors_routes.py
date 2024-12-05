@@ -22,3 +22,18 @@ def get_professor_name_from_id(professorID):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+#------------------------------------------------------------
+# Get all professors in the system
+@professors.route('/professors', methods=['GET'])
+def get_professors():
+    current_app.logger.info('GET /professors route')
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM Professors')
+    
+    theData = cursor.fetchall()
+    cursor.close()
+    
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
