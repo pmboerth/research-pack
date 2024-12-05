@@ -17,7 +17,6 @@ results = requests.get('http://api:4000/o/opportunities').json()
 if results:
     for opportunity in results:
         opportunity_id = opportunity.get('PositionId', 'No Id')
-        applicant_id = st.session_state['student_id']
         position_name = opportunity.get('Name', 'No Title')
         research_area = opportunity.get('ResearchArea', 'No Research Area')
         description = opportunity.get('Description', 'No description available.')
@@ -42,18 +41,9 @@ if results:
                 <p style="margin-bottom: 6px; color: #D1D7DC;"><strong>Created At:</strong> {created_at}</p>
             </div>
         """, unsafe_allow_html=True)
-        
-        if st.button(f"Delete {position_name}", type="primary", key=f"apply_o{opportunity_id}"):
-            response = requests.delete(f'http://api:4000/a/applications/o{opportunity_id}')
-            
-            if response.status_code == 200:
-                st.success(f"Successfully deleted: {position_name}")
-            else:
-                st.error(f"Failed to delete: {response.text}")
-        
 else:
     st.warning("No research opportunities")
 
 
 if st.button("Back"):
-    st.switch_page('pages/00_Undergraduate_Home.py')
+    st.switch_page('pages/30_Admin_Home.py')
