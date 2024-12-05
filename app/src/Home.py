@@ -11,16 +11,14 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 from modules.nav import SideBarLinks
 
-# streamlit supports regular and wide layout (how the controls are organized/displayed on the screen).
+# set the layout to wide
 st.set_page_config(layout = 'wide')
 
 # If a user is at this page, we assume they are not authenticated.  So we change the 'authenticated' value
 # in the streamlit session_state to false. 
 st.session_state['authenticated'] = False
 
-# Use the SideBarLinks function from src/modules/nav.py to control the links displayed on the left-side panel. 
-# IMPORTANT: ensure src/.streamlit/config.toml sets
-# showSidebarNavigation = false in the [client] section
+# Use the SideBarLinks function from src/modules/nav.py to control the links displayed on the left-side panel
 SideBarLinks(show_home=True)
 
 # ***************************************************
@@ -37,6 +35,8 @@ st.write('### Hi! As which user would you like to log in?')
 # functionality we put a button on the screen that the user 
 # can click to MIMIC logging in as that mock user. 
 
+
+# Undergraduate Student Alex Bellingham
 if st.button("Act as Alex Bellingham, an Undergraduate Student", 
             type = 'primary', 
             use_container_width=True):
@@ -46,6 +46,8 @@ if st.button("Act as Alex Bellingham, an Undergraduate Student",
     st.session_state['student_id'] = 1
     st.switch_page('pages/00_Undergraduate_Home.py')
 
+
+# Graduate Student Jeff Sturrow
 if st.button('Act as Jeff Sturrow, a PhD Student', 
             type = 'primary', 
             use_container_width=True):
@@ -55,6 +57,8 @@ if st.button('Act as Jeff Sturrow, a PhD Student',
     st.session_state['student_id'] = 2
     st.switch_page('pages/10_Graduate_Home.py')
 
+
+# Professor Emily Chen
 if st.button('Act as Emily Chen, an Associate Professor', 
             type = 'primary', 
             use_container_width=True):
@@ -65,6 +69,8 @@ if st.button('Act as Emily Chen, an Associate Professor',
     st.session_state['department_id'] = 1
     st.switch_page('pages/20_Professor_Home.py')
 
+
+# Administrator Carl Jackson
 if st.button('Act as Carl Jackson, a Department Administrator',
              type = 'primary',
              use_container_width=True):

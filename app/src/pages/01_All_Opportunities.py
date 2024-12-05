@@ -8,12 +8,13 @@ from modules.nav import SideBarLinks
 # Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
-# set the header of the page
+# Set the header of the page
 st.header('Research Opportunities')
 
 # Get all the research opportunities from the API
 results = requests.get('http://api:4000/o/opportunities').json()
-  
+
+# If there are results, display them on the page
 if results:
     for opportunity in results:
         # Extract details of the opportunity
@@ -59,6 +60,6 @@ if results:
 else:
     st.warning("No research opportunities")
 
-
+# Button to go back to the home page
 if st.button("Back"):
     st.switch_page('pages/00_Undergraduate_Home.py')

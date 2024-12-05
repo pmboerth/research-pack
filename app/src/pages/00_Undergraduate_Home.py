@@ -15,13 +15,12 @@ st.write('')
 st.write('')
 st.write('### What would you like to do today?')
 
-# Prompt user with options for their next action
+# Buttons to navigate to other pages
 if st.button('See all Research Opportunities', 
              type='primary',
              use_container_width=True):
   st.switch_page('pages/01_All_Opportunities.py')
 
-# Buttons to navigate to other pages
 if st.button('See Posts', 
              type='primary',
              use_container_width=True):

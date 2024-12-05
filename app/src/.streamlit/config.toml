@@ -1,19 +1,9 @@
-# ------------------------------------------------------------
-# In this file, you can make some modifications to the Streamlit
-# app's global environment. 
-#
-# All of the possible config options can be found here:
-# https://docs.streamlit.io/develop/api-reference/configuration/config.toml
-# ------------------------------------------------------------
 
 
 [client]
-# Turning the default sidebar navigation off so we 
-# can use our own
 showSidebarNavigation = false
 
 [theme]
-# Setting some basic config options related to the theme of the app
 base="dark"
 primaryColor="#4A7C8C"
 backgroundColor="#2E3A47"
@@ -21,3 +11,5 @@ secondaryBackgroundColor="#3D4A59"
 font="serif"
 
 
+[server]
+enableStaticServing = true

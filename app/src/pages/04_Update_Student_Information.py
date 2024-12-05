@@ -5,13 +5,16 @@ import pandas as pd
 import requests
 from modules.nav import SideBarLinks
 
+# Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
+# Set the header of the page
 st.header('Update Student Information')
 
+# Alex's StudentId will never change and is always 1
 student_id = st.session_state['student_id']
 
-# input fields for updating student information
+# Input fields for updating student information
 first_name = st.text_input("First Name")
 last_name = st.text_input("Last Name")
 email = st.text_input("Email")
@@ -22,7 +25,7 @@ year = st.number_input("Year", min_value=1, step=1)
 major = st.text_input("Major")
 student_type = st.selectbox("Student Type", ["Undergraduate", "Graduate"])
 
-# update student information if button is clicked
+# Update student information if button is clicked
 if st.button("Update Student", type="primary"):
     if not student_id:
         st.error("Student ID is required.")
@@ -58,7 +61,7 @@ if st.button("Update Student", type="primary"):
             else:
                 st.error(f"Error: {response.status_code} - {response.text}")
 
-# navigate to home page
+# Button to go back to the home page
 if st.button("Back"):
     st.switch_page('pages/00_Undergraduate_Home.py')
 

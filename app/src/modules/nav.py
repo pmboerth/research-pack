@@ -75,12 +75,9 @@ def AdminUpdateStudentInfo():
 
 # --------------------------------Links Function -----------------------------------------------
 def SideBarLinks(show_home=False):
-    """
-    This function handles adding links to the sidebar of the app based upon the logged-in user's role, which was put in the streamlit session_state object when logging in.
-    """
 
     # add a logo to the sidebar always
-    st.sidebar.image("assets/northeastern.png", use_container_width=True)
+    st.sidebar.image("static/northeastern.png", use_container_width=True)
 
     # If there is no logged in user, redirect to the Home (Landing) page
     if "authenticated" not in st.session_state:
@@ -88,14 +85,14 @@ def SideBarLinks(show_home=False):
         st.switch_page("Home.py")
 
     if show_home:
-        # Show the Home page link (the landing page)
+        # Show the Home page link and about link (the landing page)
         HomeNav()
         AboutPageNav()
 
     # Show the other page navigators depending on the users' role.
     if st.session_state["authenticated"]:
 
-        # Show World Bank Link and Map Demo Link if the user is a political strategy advisor role.
+        # If the user role is undergraduate_student, give them access to undergraduate pages
         if st.session_state["role"] == "undergraduate_student":
             UndergraduateStudentHome()
             ResearchOpportunities()
@@ -103,7 +100,7 @@ def SideBarLinks(show_home=False):
             MakePost()
             UpdateStudentInfo()
 
-        # If the user role is graduate_student, show the corresponding pages
+        # If the user role is graduate_student, give them access to graduate pages
         if st.session_state["role"] == "graduate_student":
             GraduateStudentHome()
 

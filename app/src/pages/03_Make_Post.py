@@ -5,8 +5,10 @@ import pandas as pd
 import requests
 from modules.nav import SideBarLinks
 
+# Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
+# Set the header of the page
 st.header('Create a New Post')
 
 # Input fields for post details
@@ -39,7 +41,8 @@ if st.button("Submit Post",
             st.error(f"Failed to add post: {response.status_code} - {response.text}")
     else:
         st.warning("Please fill out all required fields.")
-        
+
+# Button to go back to the home page    
 if st.button("Back"):
     st.switch_page('pages/00_Undergraduate_Home.py')
 
