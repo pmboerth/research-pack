@@ -18,7 +18,7 @@ email = st.text_input("Email")
 skill_id = st.number_input("Skill ID", min_value=1, step=1)
 department_id = st.number_input("Department ID", min_value=1, step=1)
 research_interest = st.text_input("Research Interest")
-year = st.text_input("Year")
+year = st.number_input("Year", min_value=1, step=1)
 major = st.text_input("Major")
 student_type = st.selectbox("Student Type", ["Undergraduate", "Graduate"])
 

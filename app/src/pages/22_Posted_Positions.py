@@ -47,7 +47,7 @@ if response.status_code == 200:
                 </div>
             """, unsafe_allow_html=True)
 
-            col1, col2, col3 = st.columns([1.2, 1.2, 15])
+            col1, col2, col3 = st.columns([1.6, 1.6, 15])
 
             with col1:
 
@@ -83,7 +83,7 @@ if response.status_code == 200:
                     st.switch_page('pages/25_View_Applicants.py')
             
     else:
-        st.warning("No posts found for the selected group.")
+        st.warning("No research positions found.")
 else:
     st.error(f"Error: {response.status_code}, {response.text}")
 
