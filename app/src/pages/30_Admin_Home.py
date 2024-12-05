@@ -17,7 +17,7 @@ st.write('### What would you like to do today?')
 if st.button('See all Research Opportunities', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/01_All_Opportunities.py')
+  st.switch_page('pages/31_All_Opps_Admin.py')
 
 if st.button('Delete uncompliant Research Opportunities', 
              type='primary',
