@@ -7,6 +7,7 @@ import requests
 
 st.set_page_config(layout = 'wide')
 
+# Import sidebar links
 SideBarLinks()
 
 st.title('Post a Research Opportunity')
