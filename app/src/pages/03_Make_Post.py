@@ -9,6 +9,7 @@ SideBarLinks()
 
 st.header('Create a New Post')
 
+# Input fields for post details
 post_title = st.text_input("Enter a Post Title:")
 
 post_content = st.text_area("Enter the Post Content:")
@@ -18,7 +19,7 @@ post_type = st.selectbox("Choose an Post Type:", ["Question", "Collaboration"])
 post_group = st.selectbox("Choose a Post Group:", ["Engineering", "Computer Science", 
                                                    "Science", "Health Science", "Social Science", "Business"])
 
-
+# Submit post if fields are filled and call the API
 if st.button("Submit Post",
              type="primary"):
     if post_title and post_content:
