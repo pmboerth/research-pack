@@ -37,7 +37,7 @@ if st.button('Make Profile',
 if st.button('See Applications', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/15_Applications.py')
+  st.switch_page('pages/15_See_Applications.py')
 
 if st.button('Add Comment', 
              type='primary',
