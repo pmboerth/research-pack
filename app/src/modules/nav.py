@@ -44,6 +44,16 @@ def GraduateStudentHome():
 def ProfessorHome():
     st.sidebar.page_link("pages/20_Professor_Home.py", label="Professor Home", icon="0️⃣")
     
+def ProfessorPostOpportunity():
+    st.sidebar.page_link("pages/21_Post_Position.py", label="Post Position", icon="1️⃣")
+    
+def ViewMyOpps():
+    st.sidebar.page_link("pages/22_Posted_Positions.py", label="View My Research Opportunities", icon="2️⃣")
+    
+def ViewStudentApps():
+    st.sidebar.page_link("pages/23_All_Applications.py", label="View Applications", icon="3️⃣")
+    
+ 
 ## ------------------------ Role of admin -------------------------------------
 def AdminHome():
     st.sidebar.page_link("pages/30_Admin_Home.py", label="Admin Home", icon="0️⃣")
@@ -100,6 +110,9 @@ def SideBarLinks(show_home=False):
         # If the user is an professor, give them access to the professor pages
         if st.session_state["role"] == "professor":
             ProfessorHome()
+            ProfessorPostOpportunity()
+            ViewMyOpps()
+            ViewStudentApps()
             
         # If the user is an administrator, give them access to the administrator pages
         if st.session_state["role"] == "admin":
