@@ -53,7 +53,7 @@ if st.button('Generate Engagement Report'):
             else:
                 st.warning(f"Could not fetch research opportunities for {department_name}")
 
-        # Now calculate the range, average, and median for each department
+        # Calculate range, average, median, min, and max for each department
         department_report = {}
 
         for record in engagement_report:
@@ -65,19 +65,26 @@ if st.button('Generate Engagement Report'):
 
             department_report[department_name].append(num_applications)
 
-        # Prepare a summary with range, average, and median
+        # Prepare a summary with range, average, median, min, and max
         summary_data = []
         
         for department_name, applications in department_report.items():
-            range_applications = max(applications) - min(applications) if applications else 0
-            average_applications = np.mean(applications) if applications else 0
-            median_applications = np.median(applications) if applications else 0
+            if applications:  # Only calculate if data exists
+                average_applications = np.mean(applications)
+                median_applications = np.median(applications)
+                min_applications = min(applications)
+                max_applications = max(applications)
+                range_applications = max(applications) - min(applications)
+            else:
+                range_applications = average_applications = median_applications = min_applications = max_applications = 0
 
             summary_data.append({
                 'Department': department_name,
                 'Range of Applications': range_applications,
                 'Average Applications': average_applications,
-                'Median Applications': median_applications
+                'Median Applications': median_applications,
+                'Min Applications': min_applications,
+                'Max Applications': max_applications
             })
 
         # Display the summary in a table
@@ -90,6 +97,4 @@ if st.button('Generate Engagement Report'):
     else:
         st.error("Failed to fetch department data. Please try again.")
 
-# Back button to return to admin home page
-if st.button("Back"):
-    st.switch_page('pages/30_Admin_Home.py')
+# Back button 
