@@ -35,7 +35,6 @@ if response.status_code == 200:
             result2 = requests.get(f'http://api:4000/sk/skills/s{skill_id}').json()
             skill_name = result2[0].get('Name', 'No Name')
 
-
             # Display each post using styled HTML
             st.markdown(f"""
                 <div style="border: 1px solid #3D4A59; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); background-color: #3D4A59;">
