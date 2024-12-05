@@ -31,16 +31,31 @@ if student_id:
             student_year = student[0].get('Year', '')
             student_major = student[0].get('Major', '')
             student_type = student[0].get('StudentType', '')
+            
+            response1 = requests.get(f'http://api:4000/sk/skills/s{student_skillid}')
+            skill_name = ''
+            if response1.status_code == 200:
+                skill_data = response1.json()
+                skill_name = skill_data[0].get('Name', 'No Name')
+        
+            response2 = requests.get(f'http://api:4000/d/departments/d{student_departmentid}')
+            department_name = ''
+            if response2.status_code == 200:
+                department_data = response1.json()
+                department_name = department_data[0].get('Name', 'No Name')
 
-            # Display the current details of the student
-            st.write(f"Current Information for {student_firstname} {student_lastname}")
-            st.write(f"Email: {student_email}")
-            st.write(f"Skill ID: {student_skillid}")
-            st.write(f"Department ID: {student_departmentid}")
-            st.write(f"Research Interest: {student_interest}")
-            st.write(f"Year: {student_year}")
-            st.write(f"Major: {student_major}")
-            st.write(f"Student Type: {student_type}")
+            st.markdown(f"""
+            <div style="border: 1px solid #2C3E50; padding: 18px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15); background-color: #2C3E50;">
+                <h3 style="margin-bottom: 10px; color: #76C7C0;">{student_firstname + ' ' + student_lastname}</h3>
+                <p style="margin-bottom: 6px; color: #ECF0F1;"><strong>Email:</strong> {student_email}</p>
+                <p style="margin-bottom: 6px; color: #ECF0F1;"><strong>Skill:</strong> {skill_name}</p>
+                <p style="margin-bottom: 6px; color: #ECF0F1;"><strong>Department:</strong> {department_name}</p>
+                <p style="margin-bottom: 6px; color: #ECF0F1;"><strong>Interest:</strong> {student_interest}</p>
+                <p style="margin-bottom: 6px; color: #ECF0F1;"><strong>Year:</strong> {student_year}</p>
+                <p style="margin-bottom: 6px; color: #ECF0F1;"><strong>Major:</strong> {student_major}</p>
+                <p style="margin-bottom: 6px; color: #ECF0F1;"><strong>Type:</strong> {student_type}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
             # Edit the fields (make them input fields for updating)
             new_firstname = st.text_input("First Name", value=student_firstname)
@@ -54,7 +69,8 @@ if student_id:
             new_type = st.text_input("Student Type", value=student_type)
 
             # Add a "Finish" button to submit the updated information
-            if st.button("Finish"):
+            if st.button("Update",
+                         type="primary"):
                 # Prepare the updated data
                 updated_data = {
                     "first_name": new_firstname,
