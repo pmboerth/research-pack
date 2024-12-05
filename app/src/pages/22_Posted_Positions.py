@@ -48,7 +48,7 @@ if response.status_code == 200:
                 </div>
             """, unsafe_allow_html=True)
 
-            col1, col2 = st.columns([1, 15])
+            col1, col2, col3 = st.columns([1, 15,15])
 
             with col1:
 
@@ -71,9 +71,17 @@ if response.status_code == 200:
                         st.success(f"Successfully deleted: {research_title}.")
                     else:
                         st.error(f"Failed to delete: {response.text}")
-
-
-
+            with col3:
+                if st.button(f"View Applicants",  type="primary", key=f"view_p{position_id}"):
+                    st.session_state['view_applicants'] = {
+                        'position_id': position_id,
+                        'research_title': research_title,
+                        'research_area': research_area,
+                        'research_description': research_description,
+                        'department_id': department_id,
+                        'skill_id': skill_id
+                    }
+                    st.switch_page('pages/25_View_Applicants.py')
             
     else:
         st.warning("No posts found for the selected group.")
