@@ -5,7 +5,7 @@ This project is a web application called Research Pack designed to provide stude
 - Post Research Opportunities: Submit new research opportunities for other students and professors to apply to.
 - Update Profile Information: Modify personal information, including academic details and research interests.
 
-The application is built using Streamlit for the front-end and is integrated with a SQL database to fetch and store data. The backend is designed to manage and retrieve research opportunities, while the front-end allows users to interact with the data in a clean and user-friendly interface. This project is containerized using Docker.
+The application is built using Streamlit for the front-end and is integrated with a SQL database to fetch and store data. The backend was designed in python using flask to manage and retrieve research opportunities, while the front-end allows users to interact with the data in a clean and user-friendly interface. This project is containerized using Docker.
 
 ## Features
 
@@ -48,8 +48,8 @@ Folder Structure:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/research-opportunities-app.git
-   cd research-opportunities-app
+   git clone https://github.com/pmboerth/research-pack.git
+   cd research-pack
 
 2. **Build the Docker containers:**:
 
@@ -69,3 +69,6 @@ This will start all necessary containers (backend, database, and front-end) and 
    http://localhost:8501
 
 Open your browser and navigate to the above. You should see the Streamlit interface where you can browse and manage research opportunities.
+
+## Demo Video
+We have provided video of our app [here](https://drive.google.com/file/d/1vG_LS6ELH9ylFvzph3VNxXHPbOBSp0Ok/view?usp=sharing)
