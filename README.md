@@ -1,4 +1,4 @@
-# Fall 2024 CS 3200 Project - Research Pack
+# Research Pack 
 
 This project is a web application called Research Pack designed to provide students and professors with an easy way to browse and post research opportunities. The app allows users to:
 - Browse Research Opportunities: View research opportunities posted by other students and professors in various fields.
@@ -71,4 +71,11 @@ This will start all necessary containers (backend, database, and front-end) and 
 Open your browser and navigate to the above. You should see the Streamlit interface where you can browse and manage research opportunities.
 
 ## Demo Video
-We have provided video of our app [here](https://drive.google.com/file/d/1vG_LS6ELH9ylFvzph3VNxXHPbOBSp0Ok/view?usp=sharing)
+We have provided a demo video of our app [here](https://drive.google.com/file/d/1vG_LS6ELH9ylFvzph3VNxXHPbOBSp0Ok/view?usp=sharing)
+
+## Contributors
+
+- Peter Boerth
+- Luca Vasiliu
+- Thomas O'Keefe
+- Tiasha Godamanna
