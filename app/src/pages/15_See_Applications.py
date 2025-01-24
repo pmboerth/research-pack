@@ -18,7 +18,7 @@ if st.button("View Applications", type="primary"):
     # Check if the opportunity ID is valid
     response_opportunity = requests.get(f'http://api:4000/o/opportunities/p{opportunity_id}')
     
-    if response_opportunity.status_code == 200:
+    if (response_opportunity.status_code == 200) and len(response_opportunity.json()) > 0:
         opportunity_data = response_opportunity.json()
         opportunity_name = opportunity_data[0].get('Name', 'No Opportunity Name')
 

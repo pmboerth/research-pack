@@ -26,7 +26,7 @@ if st.button("Submit Comment", type="primary"):
         if response.status_code == 200:
             st.success("Comment successfully added!")
         else:
-            st.error(f"Failed to add comment: {response.status_code} - {response.text}")
+            st.error("Failed to add comment, please verify correct inputs")
     else:
         st.warning("Please fill out all required fields.")
 

@@ -54,7 +54,7 @@ if st.button("Update Profile", type="primary"):
     if response.status_code == 200:
         st.success("Graduate Student Profile successfully updated!")
     else:
-        st.error(f"Failed to update profile: {response.status_code} - {response.text}")
+        st.error(f"Failed to update profile: {response.status_code}")
         
 # Back button to return to the home page
 if st.button("Back"):

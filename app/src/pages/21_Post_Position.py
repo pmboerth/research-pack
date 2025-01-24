@@ -24,7 +24,7 @@ skill_id = st.number_input("Enter a Skill ID:", min_value=1, step=1)
 # Post opportunity if fields are filled and call the API
 if st.button("Post Opportunity",
              type="primary"):
-    if research_title and research_area and research_description and skill_id:
+    if len(research_title.strip()) > 0 and len(research_area.strip()) > 0 and len(research_description.strip()) > 0 and len(skill_id.strip()) > 0:
             
             post = {
                 "name": research_title,

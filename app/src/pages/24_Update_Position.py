@@ -29,7 +29,7 @@ if position_data:
     new_skill_id = st.text_input("Enter a new Skill ID:", value=skill_id, key=f"new_skill_id{position_id}")
 
     if st.button("Update",
-                    type="primary"):
+                    type="primary") and len(new_research_title.strip()) > 0 and len(new_research_area.strip()) > 0 and len(new_research_description.strip()) > 0:
 
             update = {
                 "name": new_research_title,
@@ -43,7 +43,9 @@ if position_data:
             if response.status_code == 200:
                 st.success(f"Successfully updated: {research_title}.")
             else:
-                st.error(f"Failed to update: {response.text}")
+                st.error(f"Failed to update, please verify inputs are correct")
+    else:
+        st.error(f"Failed to update, please verify inputs are correct")
 else:
     st.error("No position data found. Please go back and select a position to update.")
 

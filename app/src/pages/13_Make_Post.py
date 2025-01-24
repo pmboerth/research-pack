@@ -22,7 +22,7 @@ post_group = st.selectbox("Choose a Post Group:", ["Engineering", "Computer Scie
 # Submit post if fields are filled and call the API
 if st.button("Submit Post",
              type="primary"):
-    if post_title and post_content:
+    if len(post_title.strip()) > 0 and len(post_content.strip()) > 0:
         
         post = {
             "post_title": post_title,

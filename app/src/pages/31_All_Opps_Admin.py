@@ -49,7 +49,7 @@ if results:
             if response.status_code == 200:
                 st.success(f"Successfully deleted: {position_name}")
             else:
-                st.error(f"Failed to delete: {response.text}")    
+                st.error("Error when deleting opportunity, please verify input is correct")    
 else:
     st.warning("No research opportunities")
 
